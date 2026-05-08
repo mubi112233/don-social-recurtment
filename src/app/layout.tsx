@@ -88,14 +88,14 @@ export const metadata: Metadata = {
     url: absoluteUrl("/en"),
     locale: "en_US",
     alternateLocale: ["de_DE"],
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "don-webdesign — Premium Web Design Services" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "don-webdesign — Premium Web Design Services" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "don-webdesign - Premium Web Design Services | Save 70% on Development",
     description:
       "Save 70% on web development with premium web design services. Modern websites that convert. Native quality, guaranteed satisfaction.",
-    images: [absoluteUrl("/og-image.jpg")],
+    images: [absoluteUrl("/opengraph-image")],
   },
   alternates: {
     canonical: absoluteUrl("/en"),
@@ -112,7 +112,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "don-webdesign",
   url: SITE_URL,
-  logo: absoluteUrl("/favicon.ico"),
+  logo: absoluteUrl("/opengraph-image"),
   description:
     "Premium web design agency specializing in modern websites, web development, UI/UX design, and digital solutions for businesses worldwide.",
   contactPoint: {
@@ -205,11 +205,11 @@ const serviceJsonLd = {
 // LocalBusiness schema for Web Design Agency
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebDesignAgency",
+  "@type": "ProfessionalService",
   name: "don-webdesign",
   url: SITE_URL,
-  logo: absoluteUrl("/favicon.ico"),
-  image: absoluteUrl("/og-image.jpg"),
+  logo: absoluteUrl("/opengraph-image"),
+  image: absoluteUrl("/opengraph-image"),
   description: "Premium web design agency specializing in modern websites, UI/UX design, and digital solutions for businesses",
   sameAs: [
     "https://linkedin.com/company/don-webdesign",

@@ -330,7 +330,7 @@ export interface FAQResponse {
 }
 
 export const fetchFAQ = (lang: string = 'en') => 
-  fetchApiDataClient<FAQResponse>(API_ENDPOINTS.FAQ, normalizeLanguage(lang));
+  fetchApiData<FAQResponse>(API_ENDPOINTS.FAQ, normalizeLanguage(lang));
 
 // Case Studies API
 export interface CaseStudy {

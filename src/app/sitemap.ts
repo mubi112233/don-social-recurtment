@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { fetchBlog, fetchCaseStudies, normalizeLanguage } from "@/lib/api";
+import { fetchApiData, API_ENDPOINTS, normalizeLanguage } from "@/lib/api";
 import { SITE_URL } from "@/lib/site-url";
 
 const base = SITE_URL;
@@ -78,11 +78,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
     const [enData, geData] = await Promise.all([
-      fetchBlog(normalizeLanguage("en")),
-      fetchBlog(normalizeLanguage("ge")),
+      fetchApiData<any>(API_ENDPOINTS.BLOGS, normalizeLanguage("en")),
+      fetchApiData<any>(API_ENDPOINTS.BLOGS, normalizeLanguage("ge")),
     ]);
-    const enPosts = Array.isArray((enData as any)?.posts) ? (enData as any).posts : [];
-    const gePosts = Array.isArray((geData as any)?.posts) ? (geData as any).posts : [];
+    const enPosts = Array.isArray(enData?.posts) ? enData.posts : Array.isArray(enData?.blogs) ? enData.blogs : [];
+    const gePosts = Array.isArray(geData?.posts) ? geData.posts : Array.isArray(geData?.blogs) ? geData.blogs : [];
     blogRoutes = [
       ...enPosts.map((p: any) => ({
         url: `${base}/en/blog/${p.slug || `${slugify(p.title)}-${p.blogId}`}`,
@@ -102,11 +102,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let caseRoutes: MetadataRoute.Sitemap = [];
   try {
     const [enData, geData] = await Promise.all([
-      fetchCaseStudies(normalizeLanguage("en")),
-      fetchCaseStudies(normalizeLanguage("ge")),
+      fetchApiData<any>(API_ENDPOINTS.CASE_STUDIES, normalizeLanguage("en")),
+      fetchApiData<any>(API_ENDPOINTS.CASE_STUDIES, normalizeLanguage("ge")),
     ]);
-    const enStudies = Array.isArray((enData as any)?.caseStudies) ? (enData as any).caseStudies : [];
-    const geStudies = Array.isArray((geData as any)?.caseStudies) ? (geData as any).caseStudies : [];
+    const enStudies = Array.isArray(enData?.caseStudies) ? enData.caseStudies : [];
+    const geStudies = Array.isArray(geData?.caseStudies) ? geData.caseStudies : [];
     caseRoutes = [
       ...enStudies.map((s: any) => ({
         url: `${base}/en/case-study/${slugify(s.title)}-${s.caseStudyId}`,

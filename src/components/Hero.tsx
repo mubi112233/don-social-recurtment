@@ -9,11 +9,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { siteConfig, localizedPath, type SiteLocale } from "@/lib/site-config";
 
-export const Hero = () => {
+export const Hero = ({ initialData }: { initialData?: HeroData | null }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -60,17 +60,16 @@ export const Hero = () => {
         stats: { clients: "1M+", costSaved: "350%", rating: "#1" },
       }, [isGe]);
 
-  const [heroData, setHeroData] = useState<HeroData | null>(fallbackData);
+  const [heroData, setHeroData] = useState<HeroData | null>(initialData ?? null);
 
   useEffect(() => {
     const fetchHeroData = async () => {
       try {
         setLoading(true);
         const data = await fetchHero(currentLang);
-        setHeroData(data || fallbackData);
-      } catch (error) {
-        console.error("Failed to fetch hero data:", error);
-        setHeroData(fallbackData);
+        if (data) setHeroData(data);
+      } catch {
+        // keep existing data
       } finally {
         setLoading(false);
       }
@@ -157,21 +156,19 @@ export const Hero = () => {
                 }}
                 className="bg-gradient-to-r from-[hsl(45,100%,50%)] via-[hsl(30,100%,45%)] to-[hsl(45,100%,50%)] bg-[length:200%_100%] bg-clip-text text-transparent"
               >
-                {loading ? "Loading..." : tagline}
+                {tagline}
               </motion.span>
             </motion.div>
 
             {/* Title with Gold Gradient like Frontend */}
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 leading-[1.15] sm:leading-[1.12] md:leading-[1.1]">
-              {loading ? "Loading..." : (
-                title?.includes(':') ? (
-                  <>
-                    <span className="text-foreground">{title.split(':')[0]}:</span>
-                    <span className="bg-gradient-to-r from-[hsl(45,100%,50%)] to-[hsl(30,100%,45%)] bg-clip-text text-transparent">{title.split(':')[1]}</span>
-                  </>
-                ) : (
-                  <span className="bg-gradient-to-r from-[hsl(45,100%,50%)] to-[hsl(30,100%,45%)] bg-clip-text text-transparent">{title}</span>
-                )
+              {title?.includes(':') ? (
+                <>
+                  <span className="text-foreground">{title.split(':')[0]}:</span>
+                  <span className="bg-gradient-to-r from-[hsl(45,100%,50%)] to-[hsl(30,100%,45%)] bg-clip-text text-transparent">{title.split(':')[1]}</span>
+                </>
+              ) : (
+                <span className="bg-gradient-to-r from-[hsl(45,100%,50%)] to-[hsl(30,100%,45%)] bg-clip-text text-transparent">{title}</span>
               )}
             </h1>
 

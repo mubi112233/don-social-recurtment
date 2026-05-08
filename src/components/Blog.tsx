@@ -46,16 +46,17 @@ interface BlogPost {
   sections?: { heading: string; details: string }[];
 }
 
-export const Blog = () => {
+export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
   const pathname = usePathname();
   const currentLang = pathname.startsWith("/ge") || pathname.startsWith("/de") ? "ge" : "en";
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts ?? []);
+  const [loading, setLoading] = useState(!initialPosts);
   const [error, setError] = useState<string | null>(null);
 
   const copy = getCopy(currentLang, "blog");
 
   useEffect(() => {
+    if (initialPosts) return;
     const fetchBlogs = async () => {
       try {
         setLoading(true);
@@ -81,7 +82,7 @@ export const Blog = () => {
     };
 
     fetchBlogs();
-  }, [currentLang]);
+  }, [currentLang, initialPosts]);
 
   if (loading) {
     return (
