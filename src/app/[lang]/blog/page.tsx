@@ -72,7 +72,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
 
   const blogData = await fetchApiData<{ blogs: any[] }>(API_ENDPOINTS.BLOGS, normalizeLanguage(lang));
   const initialPosts = Array.isArray((blogData as any)?.blogs)
-    ? (blogData as any).blogs.sort((a: any, b: any) => (a.order || 0) - (b.order || 0) || a.blogId - b.blogId)
+    ? (blogData as any).blogs.sort((a: any, b: any) => (a.order || 0) - (b.order || 0) || (a.blogId || 0) - (b.blogId || 0))
     : [];
 
   const breadcrumbSchema = generateBreadcrumbSchema([

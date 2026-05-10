@@ -31,7 +31,7 @@ const slugify = (title: string) => {
 };
 
 interface BlogPost {
-  blogId: number;
+  blogId?: number;
   title: string;
   excerpt: string;
   content: string;
@@ -43,6 +43,7 @@ interface BlogPost {
   charts?: any;
   order?: number;
   id?: number | string;
+  slug?: string;
   sections?: { heading: string; details: string }[];
 }
 
@@ -68,7 +69,7 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
         const fetchedBlogs = Array.isArray((data as any).blogs)
           ? (data as any).blogs.sort(
               (a: BlogPost, b: BlogPost) =>
-                (a.order || 0) - (b.order || 0) || a.blogId - b.blogId
+                (a.order || 0) - (b.order || 0) || (a.blogId || 0) - (b.blogId || 0)
             )
           : [];
 
@@ -99,7 +100,12 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
     );
   }
 
-  if (error || posts.length === 0) {
+  const validPosts = posts.filter((post) => {
+    const id = post.blogId ?? post.id;
+    return id != null && !Number.isNaN(Number(id));
+  });
+
+  if (error || validPosts.length === 0) {
     return (
       <motion.section
         id="blog"
@@ -145,7 +151,10 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
-          {posts.map((post: BlogPost, index: number) => (
+          {validPosts.map((post: BlogPost, index: number) => {
+            const postId = post.blogId ?? post.id;
+            const postSlug = post.slug || `${slugify(post.title)}-${postId}`;
+            return (
             <motion.div
               key={`${post.blogId || post.id || 'post'}-${index}`}
               initial={{ opacity: 0, y: 50 }}
@@ -154,7 +163,7 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Link
-                href={`/${currentLang}/blog/${slugify(post.title)}-${post.blogId || post.id}`}
+                href={`/${currentLang}/blog/${postSlug}`}
                 className="group bg-card border border-border rounded-xl sm:rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 w-full block h-full"
               >
                 {/* Image */}
@@ -208,7 +217,8 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
                 </div>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </motion.section>
