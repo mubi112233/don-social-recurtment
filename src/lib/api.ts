@@ -33,9 +33,19 @@ export function createFetchOptions(options: RequestInit = {}): RequestInit {
     headers.set('Content-Type', 'application/json');
   }
 
+  // Prevent caching to avoid 304 responses
+  // Add cache-busting headers to ensure fresh data
+  if (!headers.has('Cache-Control')) {
+    headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  }
+  if (!headers.has('Pragma')) {
+    headers.set('Pragma', 'no-cache');
+  }
+
   return {
     ...options,
     headers,
+    cache: 'no-store' as RequestCache,
   };
 }
 
@@ -129,6 +139,12 @@ export async function fetchApiData<T>(
     console.log(`[fetchApiData] Endpoint: ${endpoint} | Lang: ${lang} | Tenant: ${tenantId}`);
     const response = await fetchAPI(url, options);
     
+    // Handle 304 Not Modified - treat as failure to get fresh data
+    if (response.status === 304) {
+      console.warn(`API returned 304 Not Modified for ${endpoint} - may indicate caching issue`);
+      return null;
+    }
+    
     if (!response.ok) {
       console.warn(`API request failed: ${response.status} ${response.statusText}`);
       return null;
@@ -156,6 +172,12 @@ export async function fetchApiDataClient<T>(
     const tenantId = getTenantId();
     console.log(`[fetchApiDataClient] Endpoint: ${endpoint} | Lang: ${lang} | Tenant: ${tenantId}`);
     const response = await fetchAPIClient(url, options);
+    
+    // Handle 304 Not Modified - treat as failure to get fresh data
+    if (response.status === 304) {
+      console.warn(`API returned 304 Not Modified for ${endpoint} - may indicate caching issue`);
+      return null;
+    }
     
     if (!response.ok) {
       console.warn(`API request failed: ${response.status} ${response.statusText}`);

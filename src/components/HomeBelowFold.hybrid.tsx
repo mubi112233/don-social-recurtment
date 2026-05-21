@@ -1,7 +1,7 @@
 import { Services } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Pricing } from "@/components/Pricing";
+import { PricingDynamic } from "@/components/PricingDynamic";
 import { ToolsIntegration } from "@/components/ToolsIntegration";
 import { CaseStudies } from "@/components/CaseStudies.server";
 import { Blog } from "@/components/Blog";
@@ -19,7 +19,7 @@ export async function HomeBelowFold({ lang }: { lang: string }) {
       <div className={SPACING.container}>
         <HowItWorks />
         <Services />
-        <Pricing />
+        <PricingDynamic lang={lang} />
         <ToolsIntegration />
         <Testimonials />
         <Blog />

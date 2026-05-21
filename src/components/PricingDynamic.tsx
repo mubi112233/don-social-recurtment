@@ -1,10 +1,10 @@
 "use client";
 
 import { Check, Star, Sparkles, Calendar, ArrowRight, Loader2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { fetchPricing } from "@/lib/api";
+import { fetchPricing, normalizeLanguage } from "@/lib/api";
 import { SPACING } from "@/lib/constants";
 
 import { usePathname } from "next/navigation";
@@ -96,30 +96,49 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
 
   const pathname = usePathname();
   const pathLang = pathname.startsWith('/ge') || pathname.startsWith('/de') ? 'ge' : 'en';
-  const [currentLang] = useState(normalizeApiLang(lang || pathLang));
+  
+  // Use useMemo to compute currentLang consistently
+  const currentLang = useMemo(() => {
+    const normalized = normalizeLanguage(lang || pathLang);
+    console.log(`[PricingDynamic] Computed language: ${normalized} (from lang="${lang}", pathLang="${pathLang}")`);
+    return normalized;
+  }, [lang, pathLang]);
 
   useEffect(() => {
     const fetchPricingData = async () => {
       try {
+        console.log(`[PricingDynamic] Fetching pricing for language: ${currentLang}`);
         setLoading(true);
         setError(null);
         const data = await fetchPricing(currentLang);
-        if (!data) throw new Error('Failed to fetch pricing');
+        console.log(`[PricingDynamic] Pricing data received:`, data);
+        
+        if (!data) {
+          throw new Error('Failed to fetch pricing - no data returned');
+        }
+        
         const order = ['starter', 'professional', 'enterprise'];
         const fetchedPlans = Array.isArray(data.plans)
           ? data.plans.sort((a: { planKey: string }, b: { planKey: string }) => order.indexOf(a.planKey) - order.indexOf(b.planKey))
           : [];
+        
         if (fetchedPlans.length === 0) {
           setError('No pricing plans available. Please add plans in the admin panel.');
         }
+        
         setPlans(fetchedPlans);
       } catch (err) {
+        console.error(`[PricingDynamic] Error fetching pricing:`, err);
         setError(`${err instanceof Error ? err.message : 'Unknown error'}`);
       } finally {
         setLoading(false);
       }
     };
-    fetchPricingData();
+
+    // Always fetch when currentLang changes
+    if (currentLang) {
+      fetchPricingData();
+    }
   }, [currentLang]);
 
   const discount = vaCount >= BULK_DISCOUNT_THRESHOLD ? BULK_DISCOUNT_RATE : 0;
