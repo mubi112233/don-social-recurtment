@@ -14,11 +14,11 @@ const MAX_VA_COUNT = 10;
 const BULK_DISCOUNT_THRESHOLD = 3;
 const BULK_DISCOUNT_RATE = 0.03;
 
-export const PricingDynamic = ({ lang }: { lang: string }) => {
+export const PricingDynamic = ({ lang, initialPlans }: { lang: string; initialPlans?: any[] }) => {
   const router = useRouter();
   const [vaCount, setVaCount] = useState<number>(1);
-  const [plans, setPlans] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [plans, setPlans] = useState<any[]>(initialPlans ?? []);
+  const [loading, setLoading] = useState<boolean>(!initialPlans);
   const [error, setError] = useState<string | null>(null);
 
   const t = (
@@ -97,21 +97,18 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
   const pathname = usePathname();
   const pathLang = pathname.startsWith('/ge') || pathname.startsWith('/de') ? 'ge' : 'en';
   
-  // Use useMemo to compute currentLang consistently
   const currentLang = useMemo(() => {
-    const normalized = normalizeLanguage(lang || pathLang);
-    console.log(`[PricingDynamic] Computed language: ${normalized} (from lang="${lang}", pathLang="${pathLang}")`);
-    return normalized;
+    return normalizeLanguage(lang || pathLang);
   }, [lang, pathLang]);
 
   useEffect(() => {
+    if (initialPlans) return; // skip client fetch if server already provided data
+
     const fetchPricingData = async () => {
       try {
-        console.log(`[PricingDynamic] Fetching pricing for language: ${currentLang}`);
         setLoading(true);
         setError(null);
         const data = await fetchPricing(currentLang);
-        console.log(`[PricingDynamic] Pricing data received:`, data);
         
         if (!data) {
           throw new Error('Failed to fetch pricing - no data returned');
@@ -128,18 +125,16 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
         
         setPlans(fetchedPlans);
       } catch (err) {
-        console.error(`[PricingDynamic] Error fetching pricing:`, err);
         setError(`${err instanceof Error ? err.message : 'Unknown error'}`);
       } finally {
         setLoading(false);
       }
     };
 
-    // Always fetch when currentLang changes
     if (currentLang) {
       fetchPricingData();
     }
-  }, [currentLang]);
+  }, [currentLang, initialPlans]);
 
   const discount = vaCount >= BULK_DISCOUNT_THRESHOLD ? BULK_DISCOUNT_RATE : 0;
   const totalSavings = Math.round(plans.reduce((sum, p) => sum + p.price, 0) * vaCount * discount);
@@ -495,16 +490,9 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                     <h3 className={`text-2xl sm:text-3xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 ${plan.highlighted ? 'text-white' : 'text-white'}`}>
                       {localizedName}
                     </h3>
-                    <div className="flex items-center gap-2">
-                      <p className={`text-sm font-medium ${plan.highlighted ? 'text-white/70' : 'text-white/60'}`}>
-                        {localizedHours}
-                      </p>
-                      <span className={`px-2 py-0.5 text-xs rounded-full ${
-                        plan.highlighted ? 'bg-white/20 text-white' : 'bg-primary/20 text-primary-foreground'
-                      }`}>
-                        {parseInt(plan.hours)} {t('pricing.hoursUnit', { defaultValue: 'hours' })}
-                      </span>
-                    </div>
+                    <p className={`text-sm font-medium ${plan.highlighted ? 'text-white/70' : 'text-white/60'}`}>
+                      {localizedHours}
+                    </p>
                   </div>
 
                   {/* Price */}

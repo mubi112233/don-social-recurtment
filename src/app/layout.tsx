@@ -6,15 +6,15 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { DesignSystemProvider } from "@/components/DesignSystemProvider";
 import { SITE_URL, absoluteUrl } from "@/lib/site-url";
-
+   
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-inter",
-});
+}); 
 
 const poppins = Poppins({
-  subsets: ["latin", "latin-ext"],
+  subsets:    ["latin", "latin-ext"],
   weight: ["400", "600", "700"],
   display: "swap",
   variable: "--font-poppins",
