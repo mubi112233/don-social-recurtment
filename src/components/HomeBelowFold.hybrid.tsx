@@ -19,9 +19,9 @@ export async function HomeBelowFold({ lang }: { lang: string }) {
   ]);
 
   const faqData = faqs?.faqs || [];
-  const initialPosts = Array.isArray((blogData as any)?.blogs)
+  const initialPosts = Array.isArray((blogData as any)?.blogs) && (blogData as any).blogs.length > 0
     ? (blogData as any).blogs.sort((a: any, b: any) => (a.order || 0) - (b.order || 0) || a.blogId - b.blogId)
-    : [];
+    : undefined;
   const initialServices = Array.isArray((servicesData as any)?.services)
     ? [...(servicesData as any).services].sort((a: any, b: any) => a.order - b.order)
     : undefined;

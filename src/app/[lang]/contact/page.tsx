@@ -68,6 +68,7 @@ export default async function ContactPage({
     <>
       <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <ContactClient lang={lang} />

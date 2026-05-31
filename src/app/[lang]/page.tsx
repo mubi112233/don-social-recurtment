@@ -1,6 +1,8 @@
 import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { HomeBelowFold } from "@/components/HomeBelowFold.hybrid";
+import { Blog } from "@/components/Blog";
+import { CaseStudies } from "@/components/CaseStudies.server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { fetchApiData, API_ENDPOINTS, normalizeLanguage, fetchFAQ, type HeroData } from "@/lib/api";
@@ -214,25 +216,35 @@ export default async function HomeLangPage({
   ]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" suppressHydrationWarning>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        suppressHydrationWarning
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        suppressHydrationWarning
       />
       {faqSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          suppressHydrationWarning
         />
       )}
       <Navbar />
       <main id="main-content" className="overflow-x-hidden">
         <Hero initialData={initialHero} />
         <HomeBelowFold lang={lang} />
+        {/* Blog and Case Studies sections */}
+        <section className="py-12">
+          <Blog />
+        </section>
+        <section className="py-12">
+          <CaseStudies lang={lang} />
+        </section>
       </main>
     </div>
   );

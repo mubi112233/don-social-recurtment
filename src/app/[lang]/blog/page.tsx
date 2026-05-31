@@ -84,6 +84,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
     <>
       <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <BlogListingClient initialPosts={initialPosts} />

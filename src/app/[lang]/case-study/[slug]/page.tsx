@@ -123,16 +123,18 @@ export default async function CaseStudyPage({
       <div className={`${SPACING.sideMargin}`}>
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
         />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([
-          { label: currentLang === 'ge' ? 'Startseite' : 'Home', href: `/${currentLang}` },
-          { label: currentLang === 'ge' ? 'Fallstudien' : 'Case Studies', href: `/${currentLang}/#case-studies` },
-          { label: caseStudy.company, href: `/${currentLang}/case-study/${slug}` },
-        ])) }}
-      />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([
+            { label: currentLang === 'ge' ? 'Startseite' : 'Home', href: `/${currentLang}` },
+            { label: currentLang === 'ge' ? 'Fallstudien' : 'Case Studies', href: `/${currentLang}/#case-studies` },
+            { label: caseStudy.company, href: `/${currentLang}/case-study/${slug}` },
+          ])) }}
+        />
       <article className="max-w-5xl mx-auto py-6 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground overflow-x-auto whitespace-nowrap">

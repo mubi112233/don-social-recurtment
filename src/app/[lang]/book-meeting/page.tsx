@@ -69,6 +69,7 @@ export default async function BookMeetingPage({
     <>
       <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <BookMeetingClient />
