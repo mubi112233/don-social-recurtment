@@ -100,7 +100,7 @@ export const Blog = () => {
 
   const validPosts = posts.filter((post) => {
     const id = post.blogId ?? post.id;
-    return id != null && !Number.isNaN(Number(id));
+    return id != null && String(id).trim() !== "";
   });
 
   if (error || validPosts.length === 0) {
@@ -151,7 +151,7 @@ export const Blog = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
           {validPosts.map((post: BlogPost, index: number) => {
             const postId = post.blogId ?? post.id;
-            const postSlug = post.slug || `${slugify(post.title)}-${postId}`;
+            const postSlug = post.slug || (typeof postId === 'string' ? postId : `${slugify(post.title)}-${postId}`);
             return (
             <motion.div
               key={`${post.blogId || post.id || 'post'}-${index}`}
