@@ -120,7 +120,7 @@ const organizationJsonLd = {
     { "@type": "Country", name: "Switzerland" },
     { "@type": "Place", name: "Worldwide" },
   ],
-  sameAs: ["https://linkedin.com/company/don-webdesign", "https://twitter.com/don-webdesign", "https://instagram.com/don-webdesign"],
+  sameAs: [],
 };
 
 const websiteJsonLd = {
@@ -205,11 +205,7 @@ const localBusinessJsonLd = {
   logo: absoluteUrl("/opengraph-image"),
   image: absoluteUrl("/opengraph-image"),
   description: "Premium web design agency specializing in modern websites, UI/UX design, and digital solutions for businesses",
-  sameAs: [
-    "https://linkedin.com/company/don-webdesign",
-    "https://twitter.com/don-webdesign",
-    "https://instagram.com/don-webdesign",
-  ],
+  sameAs: [],
   priceRange: "€€",
   openingHoursSpecification: [
     {

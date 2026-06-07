@@ -18,8 +18,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { Navbar } from "@/components/Navbar";
 import {
   Mail,
-  Phone,
-  MapPin,
   Send,
   CheckCircle2,
   Users,
@@ -39,7 +37,6 @@ import {
 
 type FormValues = {
   email: string;
-  phone: string;
   companyName: string;
   contactName: string;
   projectType: string;
@@ -273,7 +270,7 @@ export default function ContactClient({ lang }: { lang: string }) {
     reset,
   } = useForm<FormValues>({
     defaultValues: {
-      email: "", phone: "", companyName: "", contactName: "",
+      email: "", companyName: "", contactName: "",
       projectType: "", projectTypeOther: "", budgetRange: "",
       industry: "", timeline: "",
       designRequirements: "", otherInfo: "",
@@ -284,17 +281,15 @@ export default function ContactClient({ lang }: { lang: string }) {
   const projectTypeValue = useWatch({ control, name: "projectType" });
 
   const emailPattern = useMemo(() => /[^\s@]+@[^\s@]+\.[^\s@]+/, []);
-  const phonePattern = useMemo(() => /^[0-9+\-()\s]{7,20}$/i, []);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const formData = new FormData();
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "8aff1902-6795-4608-ad79-be6702aa7f3a");
-    formData.append("to", "hello@don-webdesign.com");
+    formData.append("to", "patryk@dononlineagency.com");
     formData.append("subject", "New Design Project Inquiry - don-webdesign");
     formData.append("companyName", data.companyName);
     formData.append("contactName", data.contactName);
     formData.append("email", data.email);
-    formData.append("phone", data.phone);
     formData.append("projectType", data.projectType);
     if (data.projectType === "other" && data.projectTypeOther?.trim())
       formData.append("projectTypeOther", data.projectTypeOther.trim());
@@ -385,10 +380,8 @@ export default function ContactClient({ lang }: { lang: string }) {
                 <Zap className="w-4 h-4 text-amber-500" />
                 {c.contactDirect}
               </h3>
-              <ContactCard icon={Mail} label="Email" value="hello@don-webdesign.com" href="mailto:hello@don-webdesign.com" />
-              <ContactCard icon={Phone} label="Phone" value="+49 123 456 7890" href="tel:+491234567890" />
+              <ContactCard icon={Mail} label="Email" value="patryk@dononlineagency.com" href="mailto:patryk@dononlineagency.com" />
               <ContactCard icon={Calendar} label="Book a Call" value="Schedule on Calendly" href="https://calendly.com/d/cyhx-wdw-b57" />
-              <ContactCard icon={MapPin} label="Location" value="Berlin, Germany" />
             </div>
 
             {/* Features */}
@@ -511,20 +504,7 @@ export default function ContactClient({ lang }: { lang: string }) {
                       />
                       <FieldError message={errors.companyName?.message} />
                     </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="phone" className="text-sm font-medium">{c.phone} <span className="text-amber-500">*</span></Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="+49 123 456 789"
-                        className="border-border/60 focus:border-amber-500/60 focus:ring-amber-500/20 transition-all"
-                        {...register("phone", {
-                          required: c.phoneRequired,
-                          pattern: { value: phonePattern, message: c.phoneInvalid },
-                        })}
-                      />
-                      <FieldError message={errors.phone?.message} />
-                    </div>
+
                   </div>
                 </FormSection>
 
