@@ -3,25 +3,19 @@ import { Testimonials } from "@/components/Testimonials";
 import { HowItWorks } from "@/components/HowItWorks";
 import { PricingDynamic } from "@/components/PricingDynamic";
 import { ToolsIntegration } from "@/components/ToolsIntegration";
-import { CaseStudies } from "@/components/CaseStudies.server";
+import { CaseStudiesClient } from "@/components/CaseStudies.client";
 import { Blog } from "@/components/Blog";
-import { FAQInteractive } from "@/components/FAQInteractive.client";
+import { FAQClient } from "@/components/FAQClient";
 import { FinalCTA } from "@/components/FinalCTA.server";
 import { SPACING } from "@/lib/constants";
-import { fetchFAQ, fetchApiData, API_ENDPOINTS, normalizeLanguage, type PricingResponse } from "@/lib/api";
+import { fetchApiData, API_ENDPOINTS, normalizeLanguage, type PricingResponse } from "@/lib/api";
 
 export async function HomeBelowFold({ lang }: { lang: string }) {
-  const [faqs, blogData, servicesData, pricingData] = await Promise.all([
-    fetchFAQ(lang),
-    fetchApiData<{ blogs: any[] }>(API_ENDPOINTS.BLOGS, normalizeLanguage(lang)),
+  const [servicesData, pricingData] = await Promise.all([
     fetchApiData<{ services: any[] }>(API_ENDPOINTS.SERVICES, normalizeLanguage(lang)),
     fetchApiData<PricingResponse>(API_ENDPOINTS.PRICING, normalizeLanguage(lang)),
   ]);
 
-  const faqData = faqs?.faqs || [];
-  const initialPosts = Array.isArray((blogData as any)?.blogs) && (blogData as any).blogs.length > 0
-    ? (blogData as any).blogs.sort((a: any, b: any) => (a.order || 0) - (b.order || 0) || a.blogId - b.blogId)
-    : undefined;
   const initialServices = Array.isArray((servicesData as any)?.services)
     ? [...(servicesData as any).services].sort((a: any, b: any) => a.order - b.order)
     : undefined;
@@ -38,9 +32,9 @@ export async function HomeBelowFold({ lang }: { lang: string }) {
         <PricingDynamic lang={lang} initialPlans={initialPlans} />
         <ToolsIntegration />
         <Testimonials />
-        <Blog initialPosts={initialPosts} />
-        <CaseStudies lang={lang} />
-        <FAQInteractive faqs={faqData} lang={lang} />
+        <Blog />
+        <CaseStudiesClient lang={lang} />
+        <FAQClient lang={lang} />
       </div>
       <FinalCTA lang={lang} />
     </>

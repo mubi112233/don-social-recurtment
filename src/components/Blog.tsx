@@ -47,23 +47,17 @@ interface BlogPost {
   sections?: { heading: string; details: string }[];
 }
 
-export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
+export const Blog = () => {
   const pathname = usePathname();
   const currentLang = pathname.startsWith("/ge") || pathname.startsWith("/de") ? "ge" : "en";
 
-  // initialPosts is considered "provided" only when it's a non-empty array.
-  // An empty array means the server fetch either failed or returned nothing,
-  // so we fall through to the client-side fetch as a recovery path.
-  const hasServerData = Array.isArray(initialPosts) && initialPosts.length > 0;
-
-  const [posts, setPosts] = useState<BlogPost[]>(hasServerData ? initialPosts! : []);
-  const [loading, setLoading] = useState(!hasServerData);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const copy = getCopy(currentLang, "blog");
 
   useEffect(() => {
-    if (hasServerData) return;
     const fetchBlogs = async () => {
       try {
         setLoading(true);
@@ -77,6 +71,8 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
               (a: BlogPost, b: BlogPost) =>
                 (a.order || 0) - (b.order || 0) || (a.blogId || 0) - (b.blogId || 0)
             )
+          : Array.isArray((data as any).posts)
+          ? (data as any).posts
           : [];
 
         setPosts(fetchedBlogs);
@@ -89,7 +85,7 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] }) => {
     };
 
     fetchBlogs();
-  }, [currentLang, hasServerData]);
+  }, [currentLang]);
 
   if (loading) {
     return (
