@@ -66,7 +66,16 @@ export async function fetchAPI(
     (fetchOptions as any).next = { tags };
   }
 
-  return fetch(url, fetchOptions);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const res = await fetch(url, { ...fetchOptions, signal: controller.signal });
+    clearTimeout(timeout);
+    return res;
+  } catch (e) {
+    clearTimeout(timeout);
+    throw e;
+  }
 }
 
 /**

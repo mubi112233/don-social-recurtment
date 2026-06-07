@@ -1,55 +1,9 @@
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { fetchApiData, API_ENDPOINTS, normalizeLanguage } from "@/lib/api";
-import BlogPostClient from "./BlogPostClient";
+import { publicLocalePathSegment, hreflangAlternates, absoluteUrl } from "@/lib/site-url";
 import { Navbar } from "@/components/Navbar";
-import { generateBlogStructuredData, generateBreadcrumbSchema } from "@/lib/structured-data";
-import { absoluteUrl, hreflangAlternates, publicLocalePathSegment } from "@/lib/site-url";
+import BlogPostFetcher from "./BlogPostFetcher";
 
-interface BlogPost {
-  blogId: number;
-  id?: number;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  date: string;
-  readTime: string;
-  category: string;
-  image: string;
-}
-
-async function getBlogPost(lang: string, slug: string): Promise<BlogPost | null> {
-  try {
-    const data = await fetchApiData<any>(API_ENDPOINTS.BLOGS, normalizeLanguage(lang));
-    const posts: BlogPost[] = Array.isArray(data?.posts) ? data.posts : Array.isArray(data?.blogs) ? data.blogs : [];
-    if (!posts.length) return null;
-
-    // Try to extract numeric ID from end of slug (format: slugified-title-123)
-    const postId = Number(slug.split("-").pop());
-    if (!isNaN(postId)) {
-      const byId = posts.find((p) => p.blogId === postId || p.id === postId);
-      if (byId) return byId;
-    }
-
-    // Fallback: match by slugified title
-    const slugify = (title: string) =>
-      title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-")
-        .trim();
-
-    return posts.find((p) => {
-      const titleSlug = slugify(p.title);
-      // Match if slug starts with title slug (handles both title-id and just title formats)
-      return slug.startsWith(titleSlug) || titleSlug === slug;
-    }) ?? null;
-  } catch {
-    return null;
-  }
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -57,37 +11,12 @@ export async function generateMetadata({
   params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
   const { lang, slug } = await params;
-  const post = await getBlogPost(lang, slug);
-
-  if (!post) return {};
-
-  const title = `${post.title} | don-webdesign`;
-  const description = post.excerpt?.substring(0, 160) || "";
   const seg = publicLocalePathSegment(lang);
   const pathAfterLocale = `blog/${slug}`;
   const canonical = absoluteUrl(`/${seg}/${pathAfterLocale}`);
   const { languages } = hreflangAlternates(pathAfterLocale);
-
   return {
-    title,
-    description,
     alternates: { canonical, languages },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "article",
-      locale: seg === "de" ? "de_DE" : "en_US",
-      alternateLocale: seg === "de" ? "en_US" : "de_DE",
-      siteName: "don-webdesign",
-      images: post.image ? [{ url: post.image, width: 1200, height: 630, alt: post.title }] : [],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: post.image ? [post.image] : [],
-    },
   };
 }
 
@@ -98,39 +27,11 @@ export default async function BlogPostPage({
 }) {
   const { lang: rawLang, slug } = await params;
   const lang = rawLang === "de" || rawLang === "ge" ? "ge" : "en";
-  const post = await getBlogPost(lang, slug);
-
-  if (!post) notFound();
-
-  const structuredData = generateBlogStructuredData({
-    title: post.title,
-    description: post.excerpt,
-    publishedAt: post.date,
-    updatedAt: post.date,
-    image: post.image,
-    url: absoluteUrl(`/${publicLocalePathSegment(rawLang)}/blog/${slug}`),
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { label: lang === 'ge' ? 'Startseite' : 'Home', href: `/${lang}` },
-    { label: "Blog", href: `/${lang}/blog` },
-    { label: post.title, href: `/${lang}/blog/${slug}` },
-  ]);
 
   return (
     <div className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <Navbar />
-      <BlogPostClient post={post} lang={lang} />
+      <BlogPostFetcher slug={slug} lang={lang} />
     </div>
   );
 }

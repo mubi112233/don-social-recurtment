@@ -31,7 +31,7 @@ const slugify = (title: string) => {
 };
 
 interface BlogPost {
-  blogId?: number;
+  blogId?: string | number;
   title: string;
   excerpt: string;
   content: string;
@@ -47,17 +47,18 @@ interface BlogPost {
   sections?: { heading: string; details: string }[];
 }
 
-export const Blog = () => {
+export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] } = {}) => {
   const pathname = usePathname();
   const currentLang = pathname.startsWith("/ge") || pathname.startsWith("/de") ? "ge" : "en";
 
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts ?? []);
+  const [loading, setLoading] = useState(!initialPosts?.length);
   const [error, setError] = useState<string | null>(null);
 
   const copy = getCopy(currentLang, "blog");
 
   useEffect(() => {
+    if (initialPosts?.length) return;
     const fetchBlogs = async () => {
       try {
         setLoading(true);
@@ -151,7 +152,7 @@ export const Blog = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
           {validPosts.map((post: BlogPost, index: number) => {
             const postId = post.blogId ?? post.id;
-            const postSlug = post.slug || (typeof postId === 'string' ? postId : `${slugify(post.title)}-${postId}`);
+            const postSlug = post.slug ?? String(postId);
             return (
             <motion.div
               key={`${post.blogId || post.id || 'post'}-${index}`}

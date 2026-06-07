@@ -79,7 +79,7 @@ export function CaseStudiesClient({ lang }: { lang: string }) {
           {studies.map((study, index) => (
             <Link
               key={`case-study-${study.id}-${index}`}
-              href={`/${urlSeg}/case-study/${slugify(study.title)}-${study.id}`}
+              href={`/${urlSeg}/case-study/${study.id}`}
               className="group bg-card border border-border rounded-xl sm:rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 w-full block"
             >
               <div className="relative h-44 sm:h-52 md:h-48 lg:h-56 overflow-hidden">
