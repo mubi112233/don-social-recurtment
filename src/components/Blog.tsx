@@ -66,14 +66,10 @@ export const Blog = () => {
 
         if (!data) throw new Error("Failed to fetch blogs");
 
-        const fetchedBlogs = Array.isArray((data as any).blogs)
-          ? (data as any).blogs.sort(
-              (a: BlogPost, b: BlogPost) =>
-                (a.order || 0) - (b.order || 0) || (a.blogId || 0) - (b.blogId || 0)
-            )
-          : Array.isArray((data as any).posts)
-          ? (data as any).posts
-          : [];
+        const fetchedBlogs = [...data.blogs].sort(
+          (a: BlogPost, b: BlogPost) =>
+            (a.order || 0) - (b.order || 0) || (a.blogId || 0) - (b.blogId || 0)
+        );
 
         setPosts(fetchedBlogs);
       } catch (err) {

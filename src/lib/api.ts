@@ -393,10 +393,20 @@ export interface BlogPost {
 }
 
 export interface BlogResponse {
-  posts: BlogPost[];
+  posts?: BlogPost[];
+  blogs?: BlogPost[];
 }
 
-export const fetchBlog = (lang: string = 'en') => 
-  fetchApiDataClient<BlogResponse>(API_ENDPOINTS.BLOGS, normalizeLanguage(lang));
+export const fetchBlog = async (lang: string = 'en'): Promise<{ blogs: BlogPost[] } | null> => {
+  const data = await fetchApiDataClient<any>(API_ENDPOINTS.BLOGS, normalizeLanguage(lang));
+  if (!data) return null;
+  // API may return { blogs: [] } or { posts: [] } — normalise to always { blogs: [] }
+  const list: BlogPost[] = Array.isArray(data.blogs)
+    ? data.blogs
+    : Array.isArray(data.posts)
+    ? data.posts
+    : [];
+  return { blogs: list };
+};
 
 
