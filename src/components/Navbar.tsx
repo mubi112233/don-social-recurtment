@@ -16,7 +16,7 @@ export const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
   const siteLocale = normalizeLocale(pathname);
 
   useEffect(() => {
@@ -83,9 +83,14 @@ export const Navbar = () => {
     const id = hash.replace("#", "");
     if (isHomePage) {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.location.hash = hash;
+      }
     } else {
-      router.push(`${currentLang === "de" ? "/de" : "/en"}${hash}`);
+      const homeUrl = `/${currentLang === "de" ? "de" : "en"}${hash}`;
+      window.location.href = homeUrl;
     }
     setIsOpen(false);
   };
@@ -116,12 +121,12 @@ export const Navbar = () => {
             onClick={() => router.push(`/${localeUrlPrefix(siteLocale)}`)}
             className="flex items-center space-x-2 sm:space-x-3 hover:bg-white/10 rounded-lg px-2 py-1 transition-all duration-300"
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-[hsl(45,100%,50%)] rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110">
-              <span className="text-[hsl(30,85%,10%)] font-bold text-base sm:text-lg md:text-lg lg:text-xl">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-[hsl(217,91%,65%)] to-[hsl(220,90%,60%)] rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110">
+              <span className="text-white font-bold text-base sm:text-lg md:text-lg lg:text-xl">
                 {siteConfig.brandMarkText}
               </span>
             </div>
-            <span className="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold text-foreground hover:text-[hsl(45,100%,50%)] transition-colors duration-300 whitespace-nowrap">
+            <span className="text-lg sm:text-xl md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(330,81%,60%)] bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-300 whitespace-nowrap">
               {siteConfig.brandName}
             </span>
           </button>
@@ -135,7 +140,7 @@ export const Navbar = () => {
                 className="relative text-foreground/90 hover:text-foreground transition-colors duration-300 font-medium text-sm lg:text-base px-2 lg:px-3 py-2 rounded-lg hover:bg-accent group whitespace-nowrap"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[hsl(45,100%,50%)] group-hover:w-4/5 transition-all duration-300" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(330,81%,60%)] group-hover:w-4/5 transition-all duration-300" />
               </button>
             ))}
           </div>
@@ -163,14 +168,14 @@ export const Navbar = () => {
 
             <Link
               href={localizedPath(siteLocale, siteConfig.routes.contact)}
-              className="text-sm px-3 lg:px-4 py-2 border border-[hsl(45,100%,50%)]/50 rounded-full hover:bg-[hsl(45,100%,50%)]/10 hover:border-[hsl(45,100%,50%)] transition-all duration-300 font-semibold whitespace-nowrap text-foreground"
+              className="text-sm px-3 lg:px-4 py-2 border border-[hsl(217,91%,60%)]/50 rounded-full hover:bg-[hsl(217,91%,60%)]/10 hover:border-[hsl(217,91%,60%)] transition-all duration-300 font-semibold whitespace-nowrap text-foreground"
             >
               {currentLang === "de" ? "Kontakt" : "Contact"}
             </Link>
 
             <Link
               href={localizedPath(siteLocale, siteConfig.routes.bookMeeting)}
-              className="text-sm px-3 lg:px-4 py-2 bg-[hsl(45,100%,50%)] text-[hsl(30,85%,10%)] rounded-full hover:bg-[hsl(45,100%,45%)] transition-all duration-300 shadow-lg shadow-[hsl(45,100%,50%)]/30 font-semibold whitespace-nowrap"
+              className="text-sm px-3 lg:px-4 py-2 bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(330,81%,60%)] text-white rounded-full hover:opacity-90 transition-all duration-300 shadow-lg shadow-[hsl(217,91%,60%)]/30 font-semibold whitespace-nowrap"
             >
               {currentLang === "de" ? "Starten" : "Get Started"}
             </Link>
@@ -237,7 +242,7 @@ export const Navbar = () => {
                         router.push(currentLang === "de" ? "/de/contact" : "/en/contact");
                         setIsOpen(false);
                       }}
-                      className="w-full text-center text-base py-3 border border-[hsl(45,100%,50%)]/50 text-foreground rounded-lg font-semibold hover:bg-[hsl(45,100%,50%)]/10 hover:border-[hsl(45,100%,50%)] transition-all duration-300"
+                      className="w-full text-center text-base py-3 border border-[hsl(221,54%,53%)]/50 text-foreground rounded-lg font-semibold hover:bg-[hsl(221,54%,53%)]/10 hover:border-[hsl(221,54%,53%)] transition-all duration-300"
                     >
                       {currentLang === "de" ? "Kontakt" : "Contact"}
                     </button>
@@ -247,7 +252,7 @@ export const Navbar = () => {
                         router.push(currentLang === "de" ? "/de/book-meeting" : "/en/book-meeting");
                         setIsOpen(false);
                       }}
-                      className="w-full text-center text-base py-3 bg-[hsl(45,100%,50%)] text-[hsl(30,85%,10%)] rounded-lg font-semibold hover:bg-[hsl(45,100%,45%)] hover:shadow-lg hover:shadow-[hsl(45,100%,50%)]/30 transition-all duration-300"
+                      className="w-full text-center text-base py-3 bg-[hsl(221,54%,53%)] text-white rounded-lg font-semibold hover:bg-[hsl(221,54%,45%)] hover:shadow-lg hover:shadow-[hsl(221,54%,53%)]/30 transition-all duration-300"
                     >
                       {currentLang === "de" ? "Jetzt starten" : "Get Started"}
                     </button>
@@ -261,5 +266,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-
-

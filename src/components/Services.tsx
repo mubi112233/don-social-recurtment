@@ -102,11 +102,13 @@ export const Services = ({ initialServices }: { initialServices?: Service[] }) =
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block px-2.5 sm:px-3 md:px-4 lg:px-5 py-1 sm:py-1.5 md:py-2 lg:py-2.5 bg-primary text-primary-foreground text-xs sm:text-sm md:text-base font-semibold rounded-full mb-2 sm:mb-3 md:mb-4 shadow-lg">
+          <span className="inline-block px-2.5 sm:px-3 md:px-4 lg:px-5 py-1 sm:py-1.5 md:py-2 lg:py-2.5 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-xs sm:text-sm md:text-base font-semibold rounded-full mb-2 sm:mb-3 md:mb-4 shadow-lg">
             {copy.badge}
           </span>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-5 px-1 sm:px-2 text-foreground">
-            {copy.heading}
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-5 px-1 sm:px-2">
+            <span className="bg-gradient-to-r from-[hsl(222,47%,12%)] via-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] bg-clip-text text-transparent">
+              {copy.heading}
+            </span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed px-1 sm:px-2">
             {copy.subheading}

@@ -107,13 +107,15 @@ export const Testimonials = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <motion.span
-            className="inline-block px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-primary text-primary-foreground text-xs sm:text-sm font-bold rounded-full mb-2 sm:mb-3 md:mb-4 shadow-lg"
+            className="inline-block px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-xs sm:text-sm font-bold rounded-full mb-2 sm:mb-3 md:mb-4 shadow-lg"
             whileHover={{ scale: 1.05 }}
           >
             {"Client Success Stories"}
           </motion.span>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 text-foreground leading-tight">
-            {copy.heading?.replace(/<[^>]*>/g, '') || "Trusted by Growing Businesses"}
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
+            <span className="bg-gradient-to-r from-[hsl(222,47%,12%)] via-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] bg-clip-text text-transparent">
+              {copy.heading?.replace(/<[^>]*>/g, '') || "Trusted by Growing Businesses"}
+            </span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed">
             {copy.subheading || "See how businesses like yours have transformed their online presence with our premium web design services."}

@@ -48,7 +48,7 @@ export function FAQClient({ lang }: { lang: string }) {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.span
-              className="inline-block px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-primary text-primary-foreground text-xs sm:text-sm font-bold rounded-full mb-3 sm:mb-4 shadow-lg"
+              className="inline-block px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-xs sm:text-sm font-bold rounded-full mb-3 sm:mb-4 shadow-lg"
               whileHover={{ scale: 1.05 }}
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -56,8 +56,10 @@ export function FAQClient({ lang }: { lang: string }) {
             >
               Got Questions?
             </motion.span>
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-foreground leading-tight">
-              {copy.title || "Frequently Asked Questions"}
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
+              <span className="bg-gradient-to-r from-[hsl(222,47%,12%)] via-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] bg-clip-text text-transparent">
+                {copy.title || "Frequently Asked Questions"}
+              </span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               {copy.description || "Everything you need to know about our services."}

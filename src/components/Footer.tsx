@@ -21,10 +21,10 @@ export const Footer: React.FC = () => {
         { label: "Contact Us", href: "/en/contact" },
       ],
       serviceLinks: [
-        { label: "Logo & Branding", href: "/en/#services" },
-        { label: "Brand Identity", href: "/en/#services" },
-        { label: "Web Design", href: "/en/#services" },
-        { label: "Print Design", href: "/en/#services" },
+        { label: "LinkedIn Recruiting", href: "/en/#services" },
+        { label: "Meta Recruiting", href: "/en/#services" },
+        { label: "TikTok Recruiting", href: "/en/#services" },
+        { label: "Employer Branding", href: "/en/#services" },
         { label: "Pricing Plans", href: "/en/#pricing" },
       ],
       resourceLinks: [
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
         { label: "FAQ", href: "/en/#faq" },
         { label: "Testimonials", href: "/en/#testimonials" },
       ],
-      tagline: "Premium web design agency creating modern, high-converting websites. Save 70% on development with native quality results.",
+      tagline: "Don Social Recruitment - Transform your hiring with data-driven social media strategies. Find qualified candidates faster and more cost-effectively.",
       rights: "All rights reserved.",
     },
     ge: {
@@ -47,10 +47,10 @@ export const Footer: React.FC = () => {
         { label: "Kontakt", href: "/de/contact" },
       ],
       serviceLinks: [
-        { label: "Logo & Branding", href: "/de/#services" },
-        { label: "Corporate Design", href: "/de/#services" },
-        { label: "Webdesign", href: "/de/#services" },
-        { label: "Print Design", href: "/de/#services" },
+        { label: "LinkedIn Recruiting", href: "/de/#services" },
+        { label: "Meta Recruiting", href: "/de/#services" },
+        { label: "TikTok Recruiting", href: "/de/#services" },
+        { label: "Employer Branding", href: "/de/#services" },
         { label: "Preispläne", href: "/de/#pricing" },
       ],
       resourceLinks: [
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
         { label: "Häufige Fragen", href: "/de/#faq" },
         { label: "Kundenstimmen", href: "/de/#testimonials" },
       ],
-      tagline: "Premium Webdesign Agentur für moderne, konvertierende Websites. Sparen Sie 70% bei der Entwicklung mit nativer Qualität.",
+      tagline: "Don Social Recruitment - Transformieren Sie Ihr Recruiting mit datengesteuerten Social-Media-Strategien. Finden Sie qualifizierte Kandidaten schneller und kostengünstiger.",
       rights: "Alle Rechte vorbehalten.",
     },
   };
@@ -68,14 +68,14 @@ export const Footer: React.FC = () => {
   const c = links[lang];
 
   return (
-    <footer className="w-full bg-[hsl(250,50%,12%)] border-t border-white/10 mt-8">
+    <footer className="w-full bg-[hsl(222,47%,11%)] border-t border-white/10 mt-8">
       <div className={`container mx-auto ${SPACING.container} py-12 sm:py-16`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 group">
-              <div className="w-9 h-9 bg-[hsl(270,80%,65%)] rounded-lg flex items-center justify-center">
+              <div className="w-9 h-9 bg-gradient-to-br from-[hsl(217,91%,60%)] to-[hsl(330,81%,60%)] rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-black text-lg">{siteConfig.brandMarkText}</span>
               </div>
               <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{siteConfig.brandName}</span>
@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} don-webdesign. {c.rights}</p>
+          <p>© {new Date().getFullYear()} Don Social Recruitment. {c.rights}</p>
           <div className="flex items-center gap-4">
             <Link href={localizedPath(lang, siteConfig.routes.blog)} className="hover:text-primary transition-colors">Blog</Link>
             <Link href={localizedPath(lang, siteConfig.routes.contact)} className="hover:text-primary transition-colors">{isGe ? "Kontakt" : "Contact"}</Link>

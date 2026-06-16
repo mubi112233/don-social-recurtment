@@ -1,65 +1,85 @@
-/* Main CSS File for don-webdesign Next.js Application */
+/* Main CSS File for SocialRecruit Next.js Application */
 
 /* CSS Custom Properties for Theme */
 :root.main-css-theme {
+  /* Light Mode - Blueish & Pinkish Theme */
   --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  --foreground: 222 47% 11%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
-  --primary: 40 100% 50%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 217 91% 60%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 48 100% 97%;
-  --secondary-foreground: 24 30% 15%;
-  --muted: 48 40% 96%;
-  --muted-foreground: 24 20% 40%;
-  --accent: 45 100% 52%;
-  --accent-foreground: 24 30% 15%;
-  --destructive: 8 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 40 20% 85%;
-  --input: 40 20% 85%;
-  --ring: 40 100% 50%;
+  --secondary: 330 81% 60%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 330 81% 90%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 217 91% 60%;
   --radius: 0.5rem;
-  --gold: 45 100% 50%;
-  --gold-dark: 40 95% 45%;
-  --gold-light: 50 100% 60%;
+  /* Custom tokens for blueish & pinkish theme */
+  --gold: 217 91% 60%;
+  --gold-dark: 221 83% 53%;
+  --gold-light: 217 92% 75%;
+  --brand-blue: 330 81% 60%;
 }
 
 .main-css-theme.dark {
-  --background: 30 76% 18%;
+  /* Dark Mode - Blueish & Pinkish Theme */
+  --background: 330 15% 12%;
   --foreground: 0 0% 98%;
-  --card: 30 72% 20%;
+  --card: 330 15% 14%;
   --card-foreground: 0 0% 98%;
-  --popover: 30 72% 20%;
+  --popover: 330 15% 12%;
   --popover-foreground: 0 0% 98%;
-  --primary: 45 100% 55%;
-  --primary-foreground: 30 85% 10%;
-  --secondary: 30 50% 24%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 330 81% 60%;
   --secondary-foreground: 0 0% 98%;
-  --muted: 30 50% 24%;
-  --muted-foreground: 45 60% 85%;
-  --accent: 45 100% 55%;
-  --accent-foreground: 30 85% 10%;
-  --destructive: 8 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 30 35% 34%;
-  --input: 30 35% 34%;
-  --ring: 45 100% 55%;
-  --gold: 45 100% 60%;
-  --gold-dark: 40 100% 55%;
+  --muted: 330 12% 25%;
+  --muted-foreground: 330 10% 75%;
+  --accent: 330 81% 60%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 330 15% 25%;
+  --input: 330 15% 25%;
+  --ring: 217 91% 60%;
+  /* Custom tokens for dark theme */
+  --gold: 217 91% 60%;
+  --gold-dark: 221 83% 53%;
+  --brand-blue: 330 81% 60%;
 }
 
 /* Base Styles */
 * {
   border-color: hsl(var(--border));
+  scroll-behavior: smooth;
+  transition: color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              background-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Simple Background Styling for Dark Mode */
+.main-css-theme.dark,
+.main-css-theme.dark body {
+  background: hsl(330, 15%, 12%);
 }
 
 /* Smooth Scrolling */
@@ -168,7 +188,7 @@ html {
 /* Button Enhancements */
 .btn-gold {
   background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)));
-  color: #000;
+  color: #fff;
   font-weight: 600;
   border: none;
   transition: all 0.3s ease;
@@ -201,7 +221,7 @@ html {
 
 .btn-gold-outline:hover {
   background: hsl(var(--gold));
-  color: #000;
+  color: #fff;
   box-shadow: 0 4px 20px -4px hsl(var(--gold) / 0.3);
 }
 

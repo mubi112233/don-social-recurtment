@@ -5,32 +5,29 @@ import { usePathname } from "next/navigation";
 import { SPACING } from "@/lib/constants";
 
 const tools = [
-  { name: "Adobe Creative Suite", category: "Design Software" },
-  { name: "Figma", category: "UI/UX Design" },
-  { name: "Sketch", category: "UI/UX Design" },
-  { name: "Adobe Illustrator", category: "Vector Graphics" },
-  { name: "Adobe Photoshop", category: "Photo Editing" },
-  { name: "Adobe InDesign", category: "Print Design" },
-  { name: "Canva", category: "Design Platform" },
-  { name: "Blender", category: "3D Design" },
-  { name: "After Effects", category: "Motion Graphics" },
-  { name: "Premiere Pro", category: "Video Editing" },
-  { name: "Webflow", category: "Web Design" },
-  { name: "Framer", category: "Prototyping" },
+  { name: "LinkedIn Recruiter", category: "Professional Network" },
+  { name: "LinkedIn Ads", category: "Professional Network" },
+  { name: "Meta Business Suite", category: "Social Media" },
+  { name: "Facebook Ads", category: "Social Media" },
+  { name: "Instagram Ads", category: "Social Media" },
+  { name: "TikTok Ads Manager", category: "Social Media" },
+  { name: "Google Ads", category: "Search & Display" },
+  { name: "Applicant Tracking (ATS)", category: "HR Tech" },
+  { name: "HubSpot", category: "CRM & Automation" },
+  { name: "Mailchimp", category: "Email Marketing" },
+  { name: "Canva", category: "Content Creation" },
+  { name: "Hootsuite", category: "Social Management" },
 ];
 
 const categoryLabels: Record<string, { en: string; ge: string }> = {
-  "Design Software":    { en: "Design Software",     ge: "Design-Software" },
-  "UI/UX Design":       { en: "UI/UX Design",       ge: "UI/UX Design" },
-  "Vector Graphics":    { en: "Vector Graphics",    ge: "Vektorgrafik" },
-  "Photo Editing":      { en: "Photo Editing",      ge: "Bildbearbeitung" },
-  "Print Design":       { en: "Print Design",       ge: "Print-Design" },
-  "Design Platform":    { en: "Design Platform",    ge: "Design-Plattform" },
-  "3D Design":          { en: "3D Design",          ge: "3D-Design" },
-  "Motion Graphics":    { en: "Motion Graphics",    ge: "Motion Graphics" },
-  "Video Editing":      { en: "Video Editing",      ge: "Video-Bearbeitung" },
-  "Web Design":         { en: "Web Design",         ge: "Webdesign" },
-  "Prototyping":        { en: "Prototyping",         ge: "Prototyping" },
+  "Professional Network":  { en: "Professional Network",  ge: "Berufsnetzwerk" },
+  "Social Media":          { en: "Social Media",          ge: "Social Media" },
+  "Search & Display":      { en: "Search & Display",     ge: "Suche & Display" },
+  "HR Tech":               { en: "HR Tech",              ge: "HR-Technologie" },
+  "CRM & Automation":      { en: "CRM & Automation",     ge: "CRM & Automatisierung" },
+  "Email Marketing":       { en: "Email Marketing",      ge: "E-Mail-Marketing" },
+  "Content Creation":      { en: "Content Creation",     ge: "Content-Erstellung" },
+  "Social Management":     { en: "Social Management",    ge: "Social-Management" },
 };
 
 export const ToolsIntegration = () => {
@@ -59,15 +56,15 @@ export const ToolsIntegration = () => {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-foreground">
             {isGe ? (
-              <>Expertise in führenden <span className="text-primary">Design-Tools</span></>
+              <>Recruiting mit führenden <span className="text-primary">Plattformen</span></>
             ) : (
-              <>Expertise in Leading <span className="text-primary">Design Tools</span></>
+              <>Recruiting with Leading <span className="text-primary">Platforms</span></>
             )}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl">
             {isGe
-              ? "Unser Team beherrscht alle gängigen Design-Software und liefert in jedem Format, das Sie benötigen."
-              : "Our team masters all popular design software and delivers in any format you need."}
+              ? "Wir nutzen die besten Social-Media- und professionellen Netzwerke, um Ihre idealen Kandidaten zu erreichen."
+              : "We leverage the best social media and professional networks to reach your ideal candidates."}
           </p>
         </motion.div>
 
@@ -109,14 +106,14 @@ export const ToolsIntegration = () => {
           >
             <p className="text-base sm:text-lg text-foreground mb-3 sm:mb-4">
               <span className="font-bold text-primary">
-                {isGe ? "Benötigen Sie ein spezielles Format?" : "Need a specific file format?"}
+                {isGe ? "Benötigen Sie eine spezielle Plattform?" : "Need a specific platform?"}
               </span>{" "}
               {isGe ? "Einfach fragen." : "Just ask."}
             </p>
             <p className="text-sm sm:text-base text-muted-foreground">
               {isGe
-                ? "Wir liefern in jedem Format – von druckfertigen PDFs bis zu web-optimierten Assets."
-                : "We deliver in any format — from print-ready PDFs to web-optimized assets."}
+                ? "Wir arbeiten mit allen wichtigen Recruiting-Plattformen und passen unsere Strategie Ihren Bedürfnissen an."
+                : "We work with all major recruitment platforms and tailor our strategy to your needs."}
             </p>
           </motion.div>
         </div>

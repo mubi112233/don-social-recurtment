@@ -76,11 +76,13 @@ export const HowItWorks = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-full mb-4 shadow-lg">
+          <span className="inline-block px-4 py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-sm font-semibold rounded-full mb-4 shadow-lg">
             {copy.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-foreground">
-            How It <span className="text-primary">Works</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+            <span className="bg-gradient-to-r from-[hsl(222,47%,12%)] via-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] bg-clip-text text-transparent">
+              How It <span>Works</span>
+            </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
             {copy.description}

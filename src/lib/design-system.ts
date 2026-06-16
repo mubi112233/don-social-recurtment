@@ -56,20 +56,20 @@ export interface DesignTokens {
   };
 }
 
-// Default Design Tokens
+// Default Design Tokens - SocialRecruit Blue/Pink Theme
 export const defaultDesignTokens: DesignTokens = {
   colors: {
-    primary: 'hsl(220, 100%, 50%)', // Blue
-    secondary: 'hsl(220, 15%, 96%)', // Lighter Blue
-    accent: 'hsl(220, 100%, 50%)', // Bright Blue
+    primary: 'hsl(217 91% 60%)',
+    secondary: 'hsl(330 81% 60%)',
+    accent: 'hsl(330 81% 90%)',
     background: 'hsl(var(--background))',
     foreground: 'hsl(var(--foreground))',
     muted: 'hsl(var(--muted-foreground))',
     border: 'hsl(var(--border))',
     card: 'hsl(var(--card))',
-    gold: 'hsl(220, 100%, 50%)',
-    goldLight: 'hsl(220, 100%, 60%)',
-    goldDark: 'hsl(220, 100%, 40%)',
+    gold: 'hsl(217 91% 60%)',
+    goldLight: 'hsl(217 92% 75%)',
+    goldDark: 'hsl(221 83% 53%)',
   },
   spacing: {
     xs: '0.25rem',
@@ -91,7 +91,7 @@ export const defaultDesignTokens: DesignTokens = {
     md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
     lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
     xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-    gold: '0 20px 60px -15px hsl(220 100% 50% / 0.7)',
+    gold: '0 20px 60px -15px hsl(217 91% 60% / 0.7)',
   },
   typography: {
     fontFamily: {
@@ -116,34 +116,42 @@ export const defaultDesignTokens: DesignTokens = {
 
 // Alternative Color Schemes for Different Sites
 export const colorSchemes = {
-  // Blue Theme (Current - matching frontend)
+  // Blue-Pink Theme (SocialRecruit - matching frontend)
   gold: {
     ...defaultDesignTokens,
     colors: {
       ...defaultDesignTokens.colors,
-      primary: 'hsl(220, 100%, 50%)',
-      secondary: 'hsl(220, 15%, 96%)',
-      accent: 'hsl(220, 100%, 50%)',
-      gold: 'hsl(220, 100%, 50%)',
-      goldLight: 'hsl(220, 100%, 60%)',
-      goldDark: 'hsl(220, 100%, 40%)',
+      primary: 'hsl(217 91% 60%)',
+      secondary: 'hsl(330 81% 60%)',
+      accent: 'hsl(330 81% 90%)',
+      gold: 'hsl(217 91% 60%)',
+      goldLight: 'hsl(217 92% 75%)',
+      goldDark: 'hsl(221 83% 53%)',
+    },
+    shadows: {
+      ...defaultDesignTokens.shadows,
+      gold: '0 20px 60px -15px hsl(217 91% 60% / 0.7)',
     },
   },
-  
+
   // Blue Theme (Legacy)
   blue: {
     ...defaultDesignTokens,
     colors: {
       ...defaultDesignTokens.colors,
-      primary: 'hsl(220, 100%, 50%)', // Bright blue for highlights
-      secondary: 'hsl(220, 15%, 96%)',
-      accent: 'hsl(220, 100%, 50%)', // Blue accent for highlights
-      gold: 'hsl(220, 100%, 50%)', // Blue for highlights
-      goldLight: 'hsl(220, 100%, 60%)', // Lighter blue
-      goldDark: 'hsl(220, 100%, 40%)', // Darker blue
+      primary: 'hsl(217 91% 60%)',
+      secondary: 'hsl(330 81% 60%)',
+      accent: 'hsl(330 81% 90%)',
+      gold: 'hsl(217 91% 60%)',
+      goldLight: 'hsl(217 92% 75%)',
+      goldDark: 'hsl(221 83% 53%)',
+    },
+    shadows: {
+      ...defaultDesignTokens.shadows,
+      gold: '0 20px 60px -15px hsl(217 91% 60% / 0.7)',
     },
   },
-  
+
   // Green Theme
   green: {
     ...defaultDesignTokens,
@@ -152,12 +160,12 @@ export const colorSchemes = {
       primary: 'hsl(142, 71%, 45%)',
       secondary: 'hsl(142, 71%, 35%)',
       accent: 'hsl(142, 71%, 55%)',
-      gold: 'hsl(142, 71%, 45%)', // Renamed but still primary
+      gold: 'hsl(142, 71%, 45%)',
       goldLight: 'hsl(142, 71%, 55%)',
       goldDark: 'hsl(142, 71%, 35%)',
     },
   },
-  
+
   // Purple Theme
   purple: {
     ...defaultDesignTokens,
@@ -166,12 +174,12 @@ export const colorSchemes = {
       primary: 'hsl(262, 83%, 58%)',
       secondary: 'hsl(262, 83%, 48%)',
       accent: 'hsl(262, 83%, 68%)',
-      gold: 'hsl(262, 83%, 58%)', // Renamed but still primary
+      gold: 'hsl(262, 83%, 58%)',
       goldLight: 'hsl(262, 83%, 68%)',
       goldDark: 'hsl(262, 83%, 48%)',
     },
   },
-  
+
   // Red Theme
   red: {
     ...defaultDesignTokens,
@@ -180,7 +188,7 @@ export const colorSchemes = {
       primary: 'hsl(0, 84%, 60%)',
       secondary: 'hsl(0, 84%, 50%)',
       accent: 'hsl(0, 84%, 70%)',
-      gold: 'hsl(0, 84%, 60%)', // Renamed but still primary
+      gold: 'hsl(0, 84%, 60%)',
       goldLight: 'hsl(0, 84%, 70%)',
       goldDark: 'hsl(0, 84%, 50%)',
     },
@@ -189,7 +197,6 @@ export const colorSchemes = {
 
 // Helper function to get CSS custom properties
 export const getCSSVariables = (scheme: keyof typeof colorSchemes = 'gold') => {
-  
   return {
     '--color-primary': colorSchemes[scheme].colors.primary,
     '--color-secondary': colorSchemes[scheme].colors.secondary,
@@ -226,5 +233,3 @@ export const generateUtilityClasses = () => {
     muted: 'bg-muted text-muted-foreground',
   };
 };
-
-

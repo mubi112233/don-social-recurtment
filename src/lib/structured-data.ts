@@ -24,12 +24,12 @@ export function generateBlogStructuredData({
     "description": description,
     "author": {
       "@type": "Organization",
-      "name": "don-webdesign",
+      "name": "Don Social Recruitment",
       "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
-      "name": "don-webdesign",
+      "name": "Don Social Recruitment",
       "logo": {
         "@type": "ImageObject",
         "url": absoluteUrl("/og-image.jpg")
@@ -73,7 +73,7 @@ export function generateServiceStructuredData({
     },
     "areaServed": areaServed,
     "hasOfferCatalog": hasOfferCatalog,
-    "serviceType": "Web Design Services"
+    "serviceType": "Social Media Recruitment Services"
   }; 
 }
 

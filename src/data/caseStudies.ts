@@ -24,44 +24,44 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    title: "Tech Startup Brand Transformation",
-    description: "Complete rebrand for a Berlin-based fintech startup, including logo, visual identity, and marketing collateral.",
+    title: "Tech Startup Scales Engineering Team 5x",
+    description: "Helped a Berlin-based fintech startup build their engineering team from 10 to 50 developers in 6 months through targeted LinkedIn and Meta campaigns.",
     image: "/api/placeholder/600/400",
-    category: "Branding",
-    tags: ["Branding", "Visual Identity", "Startup"],
-    content: "Detailed case study content about brand transformation...",
+    category: "Tech Recruitment",
+    tags: ["LinkedIn Recruiting", "Tech Talent", "Scale-up"],
+    content: "Detailed case study content about scaling engineering team...",
     results: [
-      { metric: "Brand Recognition", value: "+200%" },
-      { metric: "Customer Engagement", value: "+85%" },
-      { metric: "Investor Interest", value: "3x" }
+      { metric: "Hires Made", value: "40+" },
+      { metric: "Time-to-Hire", value: "-65%" },
+      { metric: "Cost Savings", value: "€120K" }
     ]
   },
   {
     id: 2,
-    title: "E-commerce Packaging Redesign",
-    description: "Eye-catching packaging design for a sustainable fashion brand that increased shelf appeal and customer retention.",
+    title: "Hospitality Chain Finds 100+ Staff via TikTok",
+    description: "Innovative TikTok recruitment campaign for a hotel chain that filled 100+ positions across Germany in 3 months.",
     image: "/api/placeholder/600/400",
-    category: "Packaging",
-    tags: ["Packaging", "Sustainability", "Retail"],
-    content: "Detailed case study content about packaging redesign...",
+    category: "Hospitality Recruiting",
+    tags: ["TikTok Recruiting", "Hospitality", "Gen Z"],
+    content: "Detailed case study content about TikTok recruitment success...",
     results: [
-      { metric: "Sales Increase", value: "+45%" },
-      { metric: "Social Shares", value: "+120%" },
-      { metric: "Customer Retention", value: "+30%" }
+      { metric: "Positions Filled", value: "100+" },
+      { metric: "Application Rate", value: "+280%" },
+      { metric: "Quality Hires", value: "92%" }
     ]
   },
   {
     id: 3,
-    title: "Corporate Website Redesign",
-    description: "Modern web design for a Munich consulting firm, improving user experience and lead generation.",
+    title: "Consulting Firm Builds Sales Team Through LinkedIn",
+    description: "Strategic LinkedIn recruiting campaign for a Munich consulting firm that built a high-performing sales team of 15 professionals.",
     image: "/api/placeholder/600/400",
-    category: "Web Design",
-    tags: ["Web Design", "UX/UI", "B2B"],
-    content: "Detailed case study content about website redesign...",
+    category: "Sales Recruitment",
+    tags: ["LinkedIn", "Sales Talent", "B2B"],
+    content: "Detailed case study content about sales team recruitment...",
     results: [
-      { metric: "Lead Generation", value: "+60%" },
-      { metric: "Page Views", value: "+150%" },
-      { metric: "Client Inquiries", value: "+90%" }
+      { metric: "Sales Hires", value: "15" },
+      { metric: "Time-to-Hire", value: "14 days" },
+      { metric: "Retention Rate", value: "95%" }
     ]
   }
 ];

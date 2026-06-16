@@ -52,13 +52,12 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] } = {}) => {
   const currentLang = pathname.startsWith("/ge") || pathname.startsWith("/de") ? "ge" : "en";
 
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts ?? []);
-  const [loading, setLoading] = useState(!initialPosts?.length);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const copy = getCopy(currentLang, "blog");
 
   useEffect(() => {
-    if (initialPosts?.length) return;
     const fetchBlogs = async () => {
       try {
         setLoading(true);
@@ -137,13 +136,15 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] } = {}) => {
 
       <div className={`container mx-auto ${SPACING.container} relative z-10`}>
         <div className="mb-12 sm:mb-16 lg:mb-20 text-left max-w-5xl">
-          <span className="inline-block px-4 py-2 bg-primary text-primary-foreground text-sm font-bold rounded-full mb-4 shadow-md">
+/          <span className="inline-block px-4 py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-sm font-bold rounded-full mb-4 shadow-md">
             {copy.badge}
           </span>
-          <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-foreground leading-tight"
-            dangerouslySetInnerHTML={{ __html: decodeHtml(copy.heading) }}
-          />
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+            <span
+              className="bg-gradient-to-r from-[hsl(222,47%,12%)] via-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] bg-clip-text text-transparent"
+              dangerouslySetInnerHTML={{ __html: decodeHtml(copy.heading) }}
+            />
+          </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-4xl leading-relaxed">
             {copy.description}
           </p>

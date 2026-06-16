@@ -222,13 +222,15 @@ export const Pricing = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.span 
-            className="inline-block px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-gradient-to-r from-primary to-accent text-primary-foreground text-xs sm:text-sm font-bold rounded-full mb-2 sm:mb-3 md:mb-4 shadow-lg"
+            className="inline-block px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-xs sm:text-sm font-bold rounded-full mb-2 sm:mb-3 md:mb-4 shadow-lg"
             whileHover={{ scale: 1.05 }}
           >
             {copy.sectionBadge || "Transparent Pricing for Creative Design Packages"}
           </motion.span>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 text-foreground leading-tight">
-            Simple, transparent pricing for creative design packages
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
+            <span className="bg-gradient-to-r from-[hsl(222,47%,12%)] via-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] bg-clip-text text-transparent">
+              Simple, transparent pricing for creative design packages
+            </span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed">
             Choose a package that fits your design needs. From logos to complete brand identities.

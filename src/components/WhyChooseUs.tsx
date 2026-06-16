@@ -50,7 +50,7 @@ export const WhyChooseUs = () => {
 
   const fallbackData: WhyChooseUsData = useMemo(() => isGe ? {
     badge: "Warum wir",
-    heading: "Was uns <span class=\"text-[hsl(45,100%,60%)]\">auszeichnet</span>",
+    heading: "Was uns <span class=\"text-primary\">auszeichnet</span>",
     description: "Premium Webdesign, modernes UX/UI, schnelle Entwicklung und volle Zufriedenheitsgarantie.",
     items: [
       { icon: "Target", title: "Modernes Webdesign", description: "Moderne, responsive Websites die perfekt auf allen Geräten funktionieren und konvertieren." },
@@ -62,7 +62,7 @@ export const WhyChooseUs = () => {
     ]
   } : {
     badge: "Why Choose Us",
-    heading: "What Makes Us <span class=\"text-[hsl(45,100%,60%)]\">Different</span>",
+    heading: "What Makes Us <span class=\"text-primary\">Different</span>",
     description: "Premium web design, modern UX/UI, fast development, and full satisfaction guarantee.",
     items: [
       { icon: "Target", title: "Modern Web Design", description: "Modern, responsive websites that work perfectly on all devices and drive conversions." },
@@ -92,11 +92,10 @@ export const WhyChooseUs = () => {
 
   if (loading) {
     return (
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-[#3D2817] text-white z-30 overflow-hidden min-h-[500px]">
+      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-[hsl(222,47%,11%)] text-white z-30 overflow-hidden min-h-[500px]">
         <div className={`container mx-auto ${SPACING.container}`}>
-
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[hsl(45,100%,55%)]" />
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
         </div>
       </section>
@@ -115,7 +114,7 @@ export const WhyChooseUs = () => {
       ref={ref}
       className="relative py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden z-40"
       style={{ 
-        background: 'linear-gradient(135deg, hsl(250 50% 12%) 0%, hsl(260 45% 18%) 50%, hsl(250 50% 15%) 100%)'
+        background: 'linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(230 45% 16%) 50%, hsl(222 47% 13%) 100%)'
       }}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -123,21 +122,21 @@ export const WhyChooseUs = () => {
     >
       {/* Animated gradient orbs - Hero style */}
       <motion.div
-        className="absolute top-0 right-0 w-[500px] h-[500px] bg-[hsl(270,80%,65%)]/20 rounded-full blur-[120px] z-0"
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] z-0"
         style={{ y: springY }}
         animate={{ x: [0, 50, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
       <motion.div
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[hsl(260,85%,60%)]/15 rounded-full blur-[100px] z-0"
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/15 rounded-full blur-[100px] z-0"
         style={{ y: springY }}
         animate={{ x: [0, -40, 0], y: [0, 40, 0], scale: [1, 1.15, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         aria-hidden
       />
       <motion.div
-        className="absolute top-1/2 left-1/3 w-[300px] h-[300px] bg-[hsl(270,80%,75%)]/10 rounded-full blur-[80px] z-0"
+        className="absolute top-1/2 left-1/3 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px] z-0"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         aria-hidden
@@ -157,7 +156,7 @@ export const WhyChooseUs = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="inline-flex items-center gap-2 mb-4 sm:mb-5 md:mb-6 px-4 sm:px-5 py-2 sm:py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-xs sm:text-sm font-medium text-white/90 hover:bg-white/15 transition-all duration-300 cursor-default"
           >
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[hsl(270,80%,75%)]" />
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
             <span>{badge}</span>
           </motion.div>
           <h2 
@@ -175,25 +174,24 @@ export const WhyChooseUs = () => {
             return (
             <motion.div 
               key={index}
-              className="relative bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 hover:border-[hsl(270,80%,65%)]/50 hover:shadow-[0_25px_80px_-20px_hsl(270,80%,65%/0.4)] transition-all duration-700 group overflow-hidden"
+              className="relative bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 hover:border-primary/50 hover:shadow-[0_25px_80px_-20px_hsl(217,91%,60%/0.4)] transition-all duration-700 group overflow-hidden"
               initial={{ opacity: 0, y: 100, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: index * 0.15, ease: [0.6, -0.05, 0.01, 0.99] }}
               whileHover={{ y: -8, scale: 1.03 }}
             >
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[hsl(270,80%,65%)]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               <div className="relative z-10">
                 <motion.div 
-                  className="mb-4 sm:mb-5 md:mb-6 inline-flex p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl bg-[hsl(270,80%,65%)]/20 text-[hsl(270,80%,75%)] group-hover:bg-[hsl(270,80%,65%)] group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-[0_10px_30px_-10px_hsl(270,80%,65%/0.4)]"
+                  className="mb-4 sm:mb-5 md:mb-6 inline-flex p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl bg-primary/20 text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-[0_10px_30px_-10px_hsl(217,91%,60%/0.4)]"
                   whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                   transition={{ duration: 0.5 }}
                 >
                   <IconComponent className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" />
                 </motion.div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white group-hover:text-[hsl(270,80%,75%)] transition-colors duration-300">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white group-hover:text-primary transition-colors duration-300">
                   {item.title}
                 </h3>
                 <p className="text-sm sm:text-base text-white/60 leading-relaxed">

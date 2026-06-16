@@ -6,59 +6,93 @@
 
 export const copy = {
   en: {
+    // Navigation
+    nav: {
+      services: "Services",
+      howItWorks: "How It Works",
+      pricing: "Pricing",
+      testimonials: "Testimonials",
+      faq: "FAQ",
+      bookConsultation: "Book a Call",
+      contact: "Contact",
+    },
+
+    // Hero Section
+    hero: {
+      badge: "Don Social Recruitment Agency",
+      title: "We Find Top Talent",
+      titleHighlight: "Through Social",
+      subtitle: "Transform your recruitment with data-driven social media strategies from Don Social Recruitment. We connect you with qualified candidates faster and more cost-effectively than traditional methods.",
+      ctaPrimary: "Book Free Consultation",
+      urgency: "Limited spots available this month",
+      stats: {
+        clients: "Placements Made",
+        costSaved: "Avg. Time to Hire",
+        rating: "Client Satisfaction",
+      },
+    },
+
     // How It Works
     howItWorks: {
       badge: "Our Process",
-      heading: "From Concept to <span class=\"text-gold\">Creation</span>",
-      description: "Our streamlined 4-step process ensures every design project exceeds your expectations.",
+      heading: "From Strategy to <span class=\"text-gold\">Hire</span>",
+      description: "Our proven 4-step process delivers qualified candidates through targeted social media recruitment campaigns.",
       steps: {
         step1: {
           step: "Step 1",
-          title: "Discovery & Strategy",
-          description: "We dive deep into your brand, goals, and target audience to develop a winning creative strategy."
+          title: "Strategy & Targeting",
+          description: "We analyze your hiring needs and build ideal candidate personas for precise social media targeting."
         },
         step2: {
           step: "Step 2",
-          title: "Concept Development",
-          description: "Our designers create multiple creative concepts for you to choose from and refine."
+          title: "Campaign Creation",
+          description: "We craft compelling job ads and employer branding content optimized for each platform."
         },
         step3: {
           step: "Step 3",
-          title: "Design & Refinement",
-          description: "We bring your chosen concept to life with meticulous attention to detail and iterative feedback."
+          title: "Active Sourcing",
+          description: "Our team runs targeted campaigns across LinkedIn, Meta, TikTok, and professional networks."
         },
         step4: {
           step: "Step 4",
-          title: "Delivery & Support",
-          description: "You receive all final files in multiple formats with ongoing support for future needs."
+          title: "Screening & Delivery",
+          description: "We pre-screen applicants and deliver a shortlist of qualified, interested candidates."
         }
       }
+    },
+
+    // Services
+    services: {
+      badge: "Our Services",
+      titlePrefix: "Recruitment",
+      titleHighlight: "Solutions",
+      subtitle: "End-to-end social media recruitment services designed to fill your open positions faster.",
     },
 
     // Why Choose Us (fallback, API may provide its own)
     whyChooseUs: {
       badge: "Why Choose Us",
       heading: "What makes us <span class=\"text-gold\">different</span>",
-      description: "Award-winning creativity, strategic thinking, and pixel-perfect execution for every project.",
+      description: "Data-driven recruitment with 60% faster time-to-hire and 40% lower cost-per-hire than traditional agencies.",
     },
 
     // Testimonials
     testimonials: {
-      heading: "Trusted by <span class=\"text-gold\">Leading Brands</span>",
-      subheading: "Creative transformations that drive business growth.",
+      heading: "Trusted by <span class=\"text-gold\">200+ Companies</span>",
+      subheading: "See how we've helped businesses build their dream teams through social recruitment.",
       caseStudy: {
         badge: "Success Story",
-        title: "Case Study: <span class=\"text-gold\">Brand Transformation</span>",
-        description: "See how we rebranded a tech startup, increasing their brand recognition by 200% and customer engagement by 85%.",
+        title: "Case Study: <span class=\"text-gold\">150+ Successful Placements</span>",
+        description: "See how Don Social Recruitment helps companies scale their teams while reducing cost-per-hire by 40%.",
         cta: "View Full Case Study",
       },
     },
 
     // Blog
     blog: {
-      badge: "Design Journal",
-      heading: "Latest <span class=\"text-gold\">Insights</span>",
-      description: "Design trends, branding tips, and creative inspiration for forward-thinking brands.",
+      badge: "Recruitment Insights",
+      heading: "Latest <span class=\"text-gold\">HR Guides</span>",
+      description: "Expert recruitment strategies, social media hiring tips, employer branding best practices, and talent acquisition guides.",
       by: "By",
       readMore: "Read more",
       read: "Read",
@@ -66,164 +100,208 @@ export const copy = {
 
     // Case Studies
     caseStudies: {
-      badge: "Portfolio",
-      heading: "Creative <span class=\"text-gold\">Success Stories</span>",
-      description: "Transformative design projects that elevated brands and drove measurable business results.",
+      badge: "Success Stories",
+      heading: "Recruitment <span class=\"text-gold\">Success Stories</span>",
+      description: "See how we transformed hiring challenges into successful placements through strategic social media recruitment.",
       labels: {
-        saved: "Brand Growth",
-        teamSize: "Deliverables",
-        timeline: "Timeline",
+        saved: "Time Saved",
+        teamSize: "Hires Made",
+        timeline: "Timeframe",
         viewFull: "View Full Case Study",
-        viewStudy: "View Project",
+        viewStudy: "View Case Study",
       },
     },
 
     // FAQ
     faq: {
-      badge: "FAQ",
+      badge: "Recruitment FAQs",
       title: "Frequently Asked Questions",
-      description: "Answers to common questions about our design process, timelines, and deliverables.",
-      qualityCardTitle: "Design Quality Assurance",
-      qualityCardText: "Every design goes through rigorous quality checks and refinements to ensure excellence.",
-      toolsCardTitle: "Flexible File Formats",
-      toolsCardText: "We deliver files in all formats you need - from print-ready PDFs to web-optimized assets.",
+      description: "Answers to common questions about our social media recruitment services, platforms, pricing, and timelines.",
+      qualityCardTitle: "Quality Guarantee",
+      qualityCardText: "Pre-screened candidates, skills assessments, culture fit evaluation, and replacement guarantee.",
+      toolsCardTitle: "Complete Recruitment Stack",
+      toolsCardText: "LinkedIn • Meta • TikTok • Instagram • Google Ads • Programmatic • ATS Integration",
       stillHaveQuestionsTitle: "Still have questions?",
-      stillHaveQuestionsText: "Our design team is ready to discuss your project needs.",
-      contactSupport: "Contact Our Team",
+      stillHaveQuestionsText: "Our team is here to help. Get in touch and we'll respond within 24 hours.",
+      contactSupport: "Contact Support",
       viewPricing: "View Pricing",
     },
 
     // Pricing
     pricing: {
-      sectionBadge: "Pricing",
-      sectionTitle: "Design Packages",
-      sectionDescription: "Choose a design package that fits your needs. Flexible options for every project.",
-      vaCountLabel: "How many design projects?",
-      vaCountHelper: "Select the number of concurrent projects you need",
-      startingFrom: "Starting from €{price}/project",
-      bulkDiscount: "{percent}% multi-project discount applied!",
+      sectionBadge: "Transparent Pricing",
+      sectionTitle: "Recruitment Packages",
+      sectionDescription: "Choose a plan that fits your hiring volume. Professional recruitment with transparent pricing. No hidden fees.",
+      vaCountLabel: "How many hires per month?",
+      vaCountHelper: "Select your average monthly hiring volume",
+      startingFrom: "Starting from €{price}/month",
+      bulkDiscount: "{percent}% volume discount applied!",
       bulkSavings: "You save €{amount} total",
-      bulkHint: "Add {count} more project{suffix} to unlock {percent}% discount",
-      bannerBadge: "Free Consultation",
-      bannerTitle: "Book Your Free Design Consultation",
-      bannerSubtitle: "Discuss your vision with our creative team and get a custom quote",
+      bulkHint: "Add {count} more hire{suffix} to unlock {percent}% discount",
+      bannerBadge: "Free 30‑Minute Strategy Call",
+      bannerTitle: "Get Expert Recruitment Advice",
+      bannerSubtitle: "Discuss your hiring challenges and get a custom social media recruitment strategy",
       bannerPoints: {
         noCommitment: "No obligation",
         cancelAnytime: "Cancel anytime",
-        fullAccess: "Full creative brief"
+        fullAccess: "Free strategy audit"
       },
       plans: {
         starter: {
-          name: "Logo & Branding",
-          hours: "Starter Package",
+          name: "Starter",
+          hours: "Up to 3 hires/month",
           features: [
-            "3 Logo Concepts",
-            "Color Palette & Typography",
-            "Brand Style Guide",
-            "Business Card Design",
-            "3 Revision Rounds"
+            "LinkedIn & Meta campaigns",
+            "Basic candidate screening",
+            "Job ad creation & optimization",
+            "Weekly performance reports",
+            "Email support"
           ]
         },
         professional: {
-          name: "Complete Brand Identity",
-          hours: "Full Brand Package",
+          name: "Professional",
+          hours: "Up to 10 hires/month",
+          badge: "Most Popular",
           features: [
-            "Everything in Logo Package",
-            "Brand Strategy Session",
-            "Social Media Kit",
-            "Stationery Design Suite",
-            "Unlimited Revisions"
+            "Everything in Starter",
+            "Multi-platform campaigns (TikTok, Instagram)",
+            "Advanced candidate assessments",
+            "Employer branding content",
+            "ATS integration",
+            "Priority support"
           ]
         },
         enterprise: {
-          name: "Full Design Suite",
-          hours: "Enterprise Package",
+          name: "Enterprise",
+          hours: "Unlimited hires",
           badge: "Best Value",
           features: [
-            "Complete Brand Identity",
-            "Website Design (5 pages)",
-            "Marketing Collateral",
-            "Packaging Design",
-            "Priority Support & Updates"
+            "Everything in Professional",
+            "Dedicated recruitment manager",
+            "Custom sourcing strategies",
+            "Video interviews & assessments",
+            "Employer branding workshop",
+            "24/7 support & SLAs"
           ]
         }
       },
       button: "Get Started",
-      perMonth: "",
-      hoursUnit: "deliverables",
-      planSetupFee: "+€{fee} consultation fee",
-      planNoSetupFee: "Free consultation included",
-      disclaimer: "All packages include source files. Additional revisions available at €75/hour."
+      perMonth: "/month",
+      hoursUnit: "hire volume",
+      planSetupFee: "+€{fee} setup fee",
+      planNoSetupFee: "Free setup included",
+      disclaimer: "All plans billed monthly with no long-term contracts. Upgrade or downgrade anytime. First candidates within 7 days."
     },
 
     // Final CTA
     finalCTA: {
-      badge: "Ready to Transform Your Brand?",
-      title: "Let's Create Something <span class=\"text-gold\">Amazing</span> Together",
-      description: "Book your free design consultation and discover how we can elevate your brand.",
+      badge: "Start Hiring Smarter Today",
+      title: "Ready to Transform <span class=\"text-gold\">Your Recruitment?</span>",
+      description: "Join 200+ companies using social media to find top talent faster and more cost-effectively.",
     },
 
     // Value Proposition (if used)
     valueProposition: {
-      heading: "Why <span class=\"text-gold\">Choose Us</span>",
-      description: "Award-winning creativity, strategic thinking, and pixel-perfect execution for every project.",
+      heading: "Why <span class=\"text-gold\">200+</span> Companies Trust Us",
+      description: "Data-driven recruitment with 60% faster time-to-hire and 40% lower cost-per-hire than traditional agencies.",
+    },
+
+    // Tools Integration
+    tools: {
+      badge: "Platforms We Use",
+      heading: "Integrated With <span class=\"text-gold\">Top Platforms</span>",
+      description: "We leverage the best social media and professional networks to reach your ideal candidates.",
     },
   },
 
   ge: {
+    // Navigation
+    nav: {
+      services: "Leistungen",
+      howItWorks: "So funktioniert's",
+      pricing: "Preise",
+      testimonials: "Kundenstimmen",
+      faq: "FAQ",
+      bookConsultation: "Termin vereinbaren",
+      contact: "Kontakt",
+    },
+
+    // Hero Section
+    hero: {
+      badge: "Don Social Recruitment Agentur",
+      title: "Wir finden Top-Talente",
+      titleHighlight: "über Social Media",
+      subtitle: "Transformieren Sie Ihr Recruiting mit datengesteuerten Social-Media-Strategien von Don Social Recruitment. Wir verbinden Sie schneller und kostengünstiger mit qualifizierten Kandidaten als traditionelle Methoden.",
+      ctaPrimary: "Kostenlose Beratung",
+      urgency: "Begrenzte Plätze diesen Monat verfügbar",
+      stats: {
+        clients: "Vermittlungen",
+        costSaved: "Ø Time-to-Hire",
+        rating: "Kundenzufriedenheit",
+      },
+    },
+
     // How It Works
     howItWorks: {
       badge: "Unser Prozess",
-      heading: "Von der Konzept <span class=\"text-gold\">zur Kreation</span>",
-      description: "Unser optimierter 4-Schritte-Prozess sorgt dafür, dass jedes Design-Projekt Ihre Erwartungen übertrifft.",
+      heading: "Von Strategie zum <span class=\"text-gold\">Hire</span>",
+      description: "Unser bewährter 4-Schritte-Prozess liefert qualifizierte Kandidaten durch gezielte Social-Media-Recruiting-Kampagnen.",
       steps: {
         step1: {
           step: "Schritt 1",
-          title: "Entdeckung & Strategie",
-          description: "Wir tauchen tief in Ihre Marke, Ziele und Zielgruppe ein, um eine erfolgreiche Kreativstrategie zu entwickeln."
+          title: "Strategie & Targeting",
+          description: "Wir analysieren Ihre Hiring-Bedürfnisse und erstellen ideale Kandidaten-Personas für präzises Social-Media-Targeting."
         },
         step2: {
           step: "Schritt 2",
-          title: "Konzeptentwicklung",
-          description: "Unsere Designer erstellen mehrere kreative Konzepte zur Auswahl und Verfeinerung."
+          title: "Kampagnen-Erstellung",
+          description: "Wir erstellen überzeugende Stellenanzeigen und Employer-Branding-Inhalte, optimiert für jede Plattform."
         },
         step3: {
           step: "Schritt 3",
-          title: "Design & Verfeinerung",
-          description: "Wir bringen Ihr gewähltes Konzept mit Liebe zum Detail und iterativem Feedback zum Leben."
+          title: "Aktives Sourcing",
+          description: "Unser Team führt gezielte Kampagnen über LinkedIn, Meta, TikTok und professionelle Netzwerke durch."
         },
         step4: {
           step: "Schritt 4",
-          title: "Lieferung & Support",
-          description: "Sie erhalten alle Enddateien in mehreren Formaten mit kontinuierlichem Support für zukünftige Bedürfnisse."
+          title: "Screening & Lieferung",
+          description: "Wir screenen Bewerber vor und liefern eine Shortlist qualifizierter, interessierter Kandidaten."
         }
       }
+    },
+
+    // Services
+    services: {
+      badge: "Unsere Leistungen",
+      titlePrefix: "Recruiting",
+      titleHighlight: "Lösungen",
+      subtitle: "End-to-End Social-Media-Recruiting-Services, entwickelt um Ihre offenen Positionen schneller zu besetzen.",
     },
 
     // Why Choose Us (fallback, API may provide its own)
     whyChooseUs: {
       badge: "Warum wir",
       heading: "Was uns <span class=\"text-gold\">auszeichnet</span>",
-      description: "Preisgekrönte Kreativität, strategisches Denken und pixelgenaue Ausführung für jedes Projekt.",
+      description: "Datengesteuertes Recruiting mit 60% schnellerer Time-to-Hire und 40% niedrigeren Kosten pro Einstellung als traditionelle Agenturen.",
     },
 
     // Testimonials
     testimonials: {
-      heading: "Vertrauen von <span class=\"text-gold\">führenden Marken</span>",
-      subheading: "Kreative Transformationen, die Geschäftswachstum fördern.",
+      heading: "Vertrauen von <span class=\"text-gold\">200+ Unternehmen</span>",
+      subheading: "Sehen Sie, wie wir Unternehmen geholfen haben, ihr Dreamteam durch Social Recruiting aufzubauen.",
       caseStudy: {
         badge: "Erfolgsgeschichte",
-        title: "Fallstudie: <span class=\"text-gold\">Markentransformation</span>",
-        description: "Erfahren Sie, wie wir ein Tech-Startup neu positionierten und die Markenbekanntheit um 200% sowie die Kundenbindung um 85% steigerten.",
+        title: "Fallstudie: <span class=\"text-gold\">150+ erfolgreiche Placements</span>",
+        description: "Sehen Sie, wie Don Social Recruitment Unternehmen hilft, ihr Team zu skalieren und gleichzeitig die Kosten pro Einstellung um 40% zu senken.",
         cta: "Vollständige Fallstudie ansehen",
       },
     },
 
     // Blog
     blog: {
-      badge: "Design Journal",
-      heading: "Aktuelle <span class=\"text-gold\">Einblicke</span>",
-      description: "Design-Trends, Branding-Tipps und kreative Inspiration für zukunftsorientierte Marken.",
+      badge: "Recruiting Insights",
+      heading: "Aktuelle <span class=\"text-gold\">HR Guides</span>",
+      description: "Experten-Recruiting-Strategien, Social-Media-Hiring-Tipps, Employer-Branding-Best-Practices und Talent-Acquisition-Guides.",
       by: "Von",
       readMore: "Weiterlesen",
       read: "Lesen",
@@ -231,107 +309,117 @@ export const copy = {
 
     // Case Studies
     caseStudies: {
-      badge: "Portfolio",
-      heading: "Kreative <span class=\"text-gold\">Erfolgsgeschichten</span>",
-      description: "Transformative Design-Projekte, die Marken aufgewertet und messbare Geschäftsergebnisse erzielt haben.",
+      badge: "Erfolgsgeschichten",
+      heading: "Recruiting <span class=\"text-gold\">Erfolgsgeschichten</span>",
+      description: "Sehen Sie, wie wir Hiring-Herausforderungen in erfolgreiche Placements durch strategisches Social-Media-Recruiting verwandelt haben.",
       labels: {
-        saved: "Markenwachstum",
-        teamSize: "Deliverables",
+        saved: "Zeit gespart",
+        teamSize: "Einstellungen",
         timeline: "Zeitrahmen",
         viewFull: "Vollständige Fallstudie ansehen",
-        viewStudy: "Projekt ansehen",
+        viewStudy: "Fallstudie ansehen",
       },
     },
 
     // FAQ
     faq: {
-      badge: "FAQ",
+      badge: "Recruiting FAQs",
       title: "Häufig gestellte Fragen",
-      description: "Antworten auf häufige Fragen zu unserem Design-Prozess, Zeitplänen und Deliverables.",
-      qualityCardTitle: "Design-Qualitätssicherung",
-      qualityCardText: "Jedes Design durchläuft strenge Qualitätskontrollen und Verfeinerungen, um Exzellenz zu gewährleisten.",
-      toolsCardTitle: "Flexible Dateiformate",
-      toolsCardText: "Wir liefern Dateien in allen Formaten, die Sie brauchen – von druckfertigen PDFs bis zu web-optimierten Assets.",
+      description: "Antworten zu unseren Social-Media-Recruiting-Services, Plattformen, Preisen und Zeitplänen.",
+      qualityCardTitle: "Qualitätsgarantie",
+      qualityCardText: "Vor-screened Kandidaten, Skills-Assessments, Kultur-Fit-Evaluierung und Ersatzgarantie.",
+      toolsCardTitle: "Kompletter Recruiting-Stack",
+      toolsCardText: "LinkedIn • Meta • TikTok • Instagram • Google Ads • Programmatic • ATS-Integration",
       stillHaveQuestionsTitle: "Noch Fragen?",
-      stillHaveQuestionsText: "Unser Design-Team steht bereit, um Ihre Projektwünsche zu besprechen.",
-      contactSupport: "Team kontaktieren",
+      stillHaveQuestionsText: "Unser Team hilft Ihnen gerne. Wir antworten innerhalb von 24 Stunden.",
+      contactSupport: "Support kontaktieren",
       viewPricing: "Preise ansehen",
     },
 
     // Pricing
     pricing: {
-      sectionBadge: "Preise",
-      sectionTitle: "Design-Pakete",
-      sectionDescription: "Wählen Sie das Design-Paket, das zu Ihren Bedürfnissen passt. Flexible Optionen für jedes Projekt.",
-      vaCountLabel: "Wie viele Design-Projekte?",
-      vaCountHelper: "Wählen Sie die Anzahl der gleichzeitigen Projekte, die Sie benötigen",
-      startingFrom: "Ab €{price}/Projekt",
-      bulkDiscount: "{percent}% Rabatt bei mehreren Projekten!",
+      sectionBadge: "Transparente Preise",
+      sectionTitle: "Recruiting-Pakete",
+      sectionDescription: "Wählen Sie einen Plan, der zu Ihrem Hiring-Volumen passt. Professionelles Recruiting mit transparenten Preisen.",
+      vaCountLabel: "Wie viele Einstellungen pro Monat?",
+      vaCountHelper: "Wählen Sie Ihr durchschnittliches monatliches Hiring-Volumen",
+      startingFrom: "Ab €{price}/Monat",
+      bulkDiscount: "{percent}% Volumenrabatt!",
       bulkSavings: "Gesamtersparnis: €{amount}",
-      bulkHint: "Fügen Sie {count} weitere Projekt{suffix} hinzu, um {percent}% Rabatt zu erhalten",
-      bannerBadge: "Kostenlose Beratung",
-      bannerTitle: "Kostenloses Design-Gespräch vereinbaren",
-      bannerSubtitle: "Besprechen Sie Ihre Vision mit unserem Kreativteam und erhalten Sie ein individuelles Angebot",
+      bulkHint: "Fügen Sie {count} weitere Einstellung{suffix} hinzu, um {percent}% Rabatt zu erhalten",
+      bannerBadge: "Kostenlose 30-Min Strategie-Session",
+      bannerTitle: "Erhalten Sie Experten-Recruiting-Beratung",
+      bannerSubtitle: "Besprechen Sie Ihre Hiring-Herausforderungen und erhalten Sie eine Social-Media-Recruiting-Strategie",
       bannerPoints: {
         noCommitment: "Keine Verpflichtung",
-        cancelAnytime: "Jederzeit kündbar", 
-        fullAccess: "Volles Kreativ-Briefing"
+        cancelAnytime: "Jederzeit kündbar",
+        fullAccess: "Kostenloser Strategie-Audit"
       },
       plans: {
         starter: {
-          name: "Logo & Branding",
-          hours: "Starter-Paket",
+          name: "Starter",
+          hours: "Bis zu 3 Einstellungen/Monat",
           features: [
-            "3 Logo-Konzepte",
-            "Farbschema & Typografie",
-            "Marken-Styleguide",
-            "Visitenkarten-Design",
-            "3 Überarbeitungsrunden"
+            "LinkedIn & Meta Kampagnen",
+            "Basis-Kandidaten-Screening",
+            "Stellenanzeigen-Erstellung & Optimierung",
+            "Wöchentliche Performance-Berichte",
+            "E-Mail & Chat Support"
           ]
         },
         professional: {
-          name: "Komplette Markenidentität", 
-          hours: "Full Brand-Paket",
+          name: "Professional",
+          hours: "Bis zu 10 Einstellungen/Monat",
+          badge: "Beliebteste Wahl",
           features: [
-            "Alles aus Logo-Paket",
-            "Markenstrategie-Session",
-            "Social Media Kit",
-            "Briefpapier-Design Suite",
-            "Unbegrenzte Überarbeitungen"
+            "Alles aus Starter",
+            "Multi-Plattform-Kampagnen (TikTok, Instagram)",
+            "Erweiterte Kandidaten-Assessments",
+            "Employer-Branding-Inhalte",
+            "ATS-Integration",
+            "Prioritätsupport"
           ]
         },
         enterprise: {
-          name: "Full Design Suite",
-          hours: "Enterprise-Paket", 
+          name: "Enterprise",
+          hours: "Unbegrenzte Einstellungen",
           badge: "Bester Wert",
           features: [
-            "Komplette Markenidentität",
-            "Website-Design (5 Seiten)",
-            "Marketing-Kollateral",
-            "Verpackungsdesign",
-            "Prioritätsupport & Updates"
+            "Alles aus Professional",
+            "Dedizierter Recruiting-Manager",
+            "Individuelle Sourcing-Strategien",
+            "Video-Interviews & Assessments",
+            "Employer-Branding-Workshop",
+            "24/7 Support & SLAs"
           ]
         }
       },
       button: "Jetzt starten",
-      perMonth: "",
-      hoursUnit: "Deliverables",
-      planSetupFee: "+€{fee} Beratungsgebühr",
-      planNoSetupFee: "Kostenlose Beratung inklusive",
-      disclaimer: "Alle Pakete beinhalten Quelldateien. Zusätzliche Überarbeitungen verfügbar ab €75/Stunde."
+      perMonth: "/Monat",
+      hoursUnit: "Einstellungs-Volumen",
+      planSetupFee: "+€{fee} Setup-Gebühr",
+      planNoSetupFee: "Kostenloses Setup inklusive",
+      disclaimer: "Alle Pläne monatlich abrechnbar ohne Langzeitvertrag. Jederzeit upgraden oder downgraden. Erste Kandidaten innerhalb von 7 Tagen."
     },
 
     // Final CTA
     finalCTA: {
-      badge: "Bereit, Ihre Marke zu transformieren?",
-      title: "Lassen Sie uns etwas <span class=\"text-gold\">Großartiges</span> zusammen schaffen",
-      description: "Buchen Sie Ihr kostenloses Design-Gespräch und entdecken Sie, wie wir Ihre Marke aufwerten können."
+      badge: "Beginnen Sie heute mit smarter Hiring",
+      title: "Bereit, Ihr <span class=\"text-gold\">Recruiting zu transformieren?</span>",
+      description: "Schließen Sie sich 200+ Unternehmen an, die Social Media nutzen, um schneller und kostengünstiger Top-Talente zu finden.",
     },
 
     // Value Proposition (if used)
     valueProposition: {
-      heading: "Warum <span class=\"text-gold\">wir</span>?",
-      description: "Preisgekrönte Kreativität, strategisches Denken und pixelgenaue Ausführung für jedes Projekt.",
+      heading: "Warum <span class=\"text-gold\">200+</span> Unternehmen uns vertrauen",
+      description: "Datengesteuertes Recruiting mit 60% schnellerer Time-to-Hire und 40% niedrigeren Kosten pro Einstellung als traditionelle Agenturen.",
+    },
+
+    // Tools Integration
+    tools: {
+      badge: "Plattformen die wir nutzen",
+      heading: "Integriert mit <span class=\"text-gold\">Top-Plattformen</span>",
+      description: "Wir nutzen die besten Social-Media- und professionellen Netzwerke, um Ihre idealen Kandidaten zu erreichen.",
     },
   },
 } as const;

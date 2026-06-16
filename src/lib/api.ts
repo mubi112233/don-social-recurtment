@@ -409,12 +409,24 @@ export interface BlogResponse {
 export const fetchBlog = async (lang: string = 'en'): Promise<{ blogs: BlogPost[] } | null> => {
   const data = await fetchApiDataClient<any>(API_ENDPOINTS.BLOGS, normalizeLanguage(lang));
   if (!data) return null;
-  // API may return { blogs: [] } or { posts: [] } — normalise to always { blogs: [] }
-  const list: BlogPost[] = Array.isArray(data.blogs)
-    ? data.blogs
-    : Array.isArray(data.posts)
-    ? data.posts
-    : [];
+
+  const raw = Array.isArray(data.blogs) ? data.blogs : Array.isArray(data.posts) ? data.posts : [];
+
+  let list: BlogPost[];
+  // Flat array of posts (blogId on each item)
+  if (raw.length > 0 && raw[0]?.blogId !== undefined) {
+    list = raw;
+  } else if (raw.length > 0) {
+    // Container object with blog_1, blog_2... keys
+    const container = raw[0];
+    list = Object.keys(container)
+      .filter(k => k.startsWith('blog_'))
+      .map(k => container[k])
+      .filter(Boolean);
+  } else {
+    list = [];
+  }
+
   return { blogs: list };
 };
 
