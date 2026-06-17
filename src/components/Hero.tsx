@@ -40,7 +40,7 @@ export const Hero = ({ initialData }: { initialData?: HeroData | null }) => {
   const isGe = currentLang === "ge";
 
   // Fallback — social recruitment content
-  const fallbackData: HeroData = useMemo(() => isGe
+  const fallbackData = useMemo(() => isGe
     ? {
         title: "Social-Media-Recruiting für Top-Talente",
         subtitle: "Finden Sie qualifizierte Kandidaten über LinkedIn, Instagram & TikTok. Wir übernehmen das Sourcing, Screening und Engagement – 80% schneller als traditionelle Methoden.",
@@ -48,7 +48,9 @@ export const Hero = ({ initialData }: { initialData?: HeroData | null }) => {
         image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=900&fit=crop&q=80",
         ctaPrimary: "Kostenlosen Strategieanruf buchen",
         urgency: "Verfügbar 24/7",
-        stats: { clients: "500+", costSaved: "80%", rating: "98%" },
+        statsClients: "500+",
+        statsProjects: "80%",
+        statsRating: "98%",
       }
     : {
         title: "Social Media Recruitment for Top Talent",
@@ -57,7 +59,9 @@ export const Hero = ({ initialData }: { initialData?: HeroData | null }) => {
         image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=900&fit=crop&q=80",
         ctaPrimary: "Book Free Strategy Call",
         urgency: "Available 24/7",
-        stats: { clients: "500+", costSaved: "80%", rating: "98%" },
+        statsClients: "500+",
+        statsProjects: "80%",
+        statsRating: "98%",
       }, [isGe]);
 
   const [heroData, setHeroData] = useState<HeroData | null>(initialData ?? null);
@@ -91,7 +95,11 @@ export const Hero = ({ initialData }: { initialData?: HeroData | null }) => {
     ? `${process.env.NEXT_PUBLIC_API_BASE || 'https://api.don-va.com'}${rawImage}`
     : rawImage;
   const ctaPrimary = heroData?.ctaPrimary || fallbackData.ctaPrimary;
-  const stats = fallbackData.stats as { clients: string; costSaved: string; rating: string };
+  const stats = {
+    clients: heroData?.statsClients || fallbackData.statsClients || "500+",
+    costSaved: heroData?.statsProjects || fallbackData.statsProjects || "80%",
+    rating: heroData?.statsRating || fallbackData.statsRating || "98%",
+  };
 
   const statsLabels = isGe
     ? { clients: "Unternehmen bedient", costSaved: "Zeitersparnis", rating: "Zufriedenheit" }
