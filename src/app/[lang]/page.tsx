@@ -244,10 +244,12 @@ export default async function HomeLangPage({
           suppressHydrationWarning
         />
       )}
-      <Navbar />
+      {/* CRASH ISOLATION: Navbar and Hero commented out */}
+      {/* <Navbar /> */}
       <main id="main-content" className="overflow-x-hidden">
-        <Hero initialData={initialHero} />
-        <HomeBelowFold lang={lang} />
+        {/* <Hero initialData={initialHero} /> */}
+        {/* <HomeBelowFold lang={lang} /> */}
+        <p style={{ padding: '2rem' }}>Page shell OK — Hero/Navbar commented out</p>
       </main>
     </div>
   );
