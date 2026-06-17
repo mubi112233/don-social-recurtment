@@ -109,7 +109,7 @@ export default function CaseStudyFetcher({ slug, lang }: { slug: string; lang: s
           </figure>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12">
+        {cs.stats && <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12">
           {[
             { icon: <DollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-gold" />, value: cs.stats.costSaved, label: copy.labels.saved },
             { icon: <Users className="w-6 h-6 sm:w-8 sm:h-8 text-gold" />, value: cs.stats.vaCount, label: copy.labels.teamSize },
@@ -123,7 +123,7 @@ export default function CaseStudyFetcher({ slug, lang }: { slug: string; lang: s
               <div className="text-xs sm:text-sm font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</div>
             </div>
           ))}
-        </div>
+        </div>}
 
         <section className="mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-6 flex items-center gap-3">

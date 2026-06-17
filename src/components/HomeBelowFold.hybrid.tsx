@@ -11,13 +11,14 @@ import { FinalCTA } from "@/components/FinalCTA.server";
 export async function HomeBelowFold({ lang }: { lang: string }) {
   return (
     <>
-      <Services />
-      <Testimonials />
       <HowItWorks />
+      <Services />
       <PricingDynamic lang={lang} />
       <ToolsIntegration />
-      <CaseStudiesClient lang={lang} />
+      <Testimonials />
       <Blog />
+      <CaseStudiesClient lang={lang} />
+      
       <FAQClient lang={lang} />
       <FinalCTA lang={lang} />
     </>

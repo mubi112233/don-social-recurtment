@@ -128,7 +128,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
   ];
 
   return (
-    <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-br from-[#3D2817] via-[#4A3320] to-[#2A1B0F]">
+    <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-br from-[hsl(217,91%,18%)] via-[hsl(270,60%,20%)] to-[hsl(330,81%,18%)]">
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 opacity-5"
@@ -138,14 +138,14 @@ export async function FinalCTA({ lang }: { lang: string }) {
             backgroundSize: "50px 50px",
           }}
         />
-        <div className="absolute -top-20 -right-20 w-80 h-80 bg-[hsl(45,100%,55%)]/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-16 -left-16 w-60 h-60 bg-[hsl(45,100%,55%)]/10 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary/15 rounded-full blur-3xl" />
+        <div className="absolute -bottom-16 -left-16 w-60 h-60 bg-secondary/15 rounded-full blur-3xl" />
       </div>
 
       <div className="w-full px-0 relative z-10">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6">
           <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="px-5 py-2.5 bg-[hsl(45,100%,55%)] backdrop-blur-lg rounded-full text-sm font-bold text-[#3D2817] flex items-center gap-2 shadow-xl">
+            <div className="px-5 py-2.5 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] backdrop-blur-lg rounded-full text-sm font-bold text-white flex items-center gap-2 shadow-xl">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>{c.badge}</span>
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -155,7 +155,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 sm:mb-8 text-white leading-[1.1]">
             <span className="block drop-shadow-lg">{c.headlineLine1}</span>
             <span className="relative inline-block mt-2">
-              <span className="relative z-10 bg-gradient-to-r from-[hsl(45,100%,55%)] via-[hsl(45,100%,60%)] to-[hsl(45,100%,55%)] bg-clip-text text-transparent drop-shadow-2xl">
+              <span className="relative z-10 bg-gradient-to-r from-[hsl(217,91%,70%)] via-[hsl(270,60%,75%)] to-[hsl(330,81%,70%)] bg-clip-text text-transparent drop-shadow-2xl">
                 {c.headlineLine2}
               </span>
             </span>
@@ -169,9 +169,9 @@ export async function FinalCTA({ lang }: { lang: string }) {
               {c.benefits.map((benefit, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 bg-[hsl(45,100%,55%)]/20 backdrop-blur-md rounded-full px-4 py-2 border border-[hsl(45,100%,55%)]/30 hover:bg-[hsl(45,100%,55%)]/30 transition-all duration-300"
+                  className="flex items-center gap-2 bg-primary/20 backdrop-blur-md rounded-full px-4 py-2 border border-primary/30 hover:bg-primary/30 transition-all duration-300"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[hsl(45,100%,60%)] flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[hsl(217,91%,75%)] flex-shrink-0" />
                   <span className="text-white text-sm font-semibold whitespace-nowrap">{benefit}</span>
                 </div>
               ))}
@@ -181,7 +181,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a
               href={c.primaryHref}
-              className="inline-flex items-center justify-center gap-3 bg-[hsl(45,100%,55%)] text-[#3D2817] hover:bg-[hsl(45,100%,60%)] hover:scale-[1.08] px-8 sm:px-12 py-6 sm:py-8 text-base sm:text-lg font-extrabold rounded-2xl shadow-xl transition-all duration-300 border-2 border-[hsl(45,100%,55%)]/30 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white hover:opacity-90 hover:scale-[1.08] px-8 sm:px-12 py-6 sm:py-8 text-base sm:text-lg font-extrabold rounded-2xl shadow-xl transition-all duration-300 border-2 border-white/20 w-full sm:w-auto"
             >
               <span>{c.primaryCta}</span>
               <ArrowRight className="h-5 w-5" />
@@ -190,7 +190,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
               href={c.secondaryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-[hsl(45,100%,55%)]/10 border-2 border-[hsl(45,100%,55%)]/30 text-white hover:bg-[hsl(45,100%,55%)] hover:text-[#3D2817] hover:scale-[1.08] px-6 sm:px-10 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl backdrop-blur-lg transition-all duration-300 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-3 bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:scale-[1.08] px-6 sm:px-10 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl backdrop-blur-lg transition-all duration-300 w-full sm:w-auto"
             >
               <MessageCircle className="h-5 w-5" />
               <span>{c.secondaryCta}</span>
@@ -201,9 +201,9 @@ export async function FinalCTA({ lang }: { lang: string }) {
             {statsItems.map((stat, i) => (
               <div
                 key={i}
-                className="bg-[hsl(45,100%,55%)]/15 backdrop-blur-lg border border-[hsl(45,100%,55%)]/30 rounded-2xl p-4 sm:p-6 hover:bg-[hsl(45,100%,55%)]/25 transition-all duration-300 group"
+                className="bg-primary/15 backdrop-blur-lg border border-primary/30 rounded-2xl p-4 sm:p-6 hover:bg-primary/25 transition-all duration-300 group"
               >
-                <stat.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-[hsl(45,100%,60%)] mb-2 mx-auto group-hover:scale-110 transition-transform duration-300" />
+                <stat.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-[hsl(217,91%,75%)] mb-2 mx-auto group-hover:scale-110 transition-transform duration-300" />
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{stat.value}</div>
                 <div className="text-xs sm:text-sm text-white/80">{stat.label}</div>
               </div>
@@ -211,27 +211,27 @@ export async function FinalCTA({ lang }: { lang: string }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-3 text-white/90 bg-[hsl(45,100%,55%)]/10 backdrop-blur-md rounded-xl p-4 border border-[hsl(45,100%,55%)]/20 hover:bg-[hsl(45,100%,55%)]/15 transition-all duration-300">
-              <div className="p-2 bg-[hsl(45,100%,55%)]/20 rounded-lg">
-                <Clock className="w-5 h-5 text-[hsl(45,100%,60%)] flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 text-white/90 bg-primary/10 backdrop-blur-md rounded-xl p-4 border border-primary/20 hover:bg-primary/15 transition-all duration-300">
+              <div className="p-2 bg-primary/20 rounded-lg">
+                <Clock className="w-5 h-5 text-[hsl(217,91%,75%)] flex-shrink-0" />
               </div>
               <div className="text-left">
                 <div className="font-bold text-white text-base">{c.trust.consultationTime}</div>
                 <div className="text-sm text-white/80">{c.trust.consultationLabel}</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 text-white/90 bg-[hsl(45,100%,55%)]/10 backdrop-blur-md rounded-xl p-4 border border-[hsl(45,100%,55%)]/20 hover:bg-[hsl(45,100%,55%)]/15 transition-all duration-300">
-              <div className="p-2 bg-[hsl(45,100%,55%)]/20 rounded-lg">
-                <div className="w-5 h-5 rounded-full bg-[hsl(45,100%,60%)] animate-pulse flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 text-white/90 bg-primary/10 backdrop-blur-md rounded-xl p-4 border border-primary/20 hover:bg-primary/15 transition-all duration-300">
+              <div className="p-2 bg-primary/20 rounded-lg">
+                <div className="w-5 h-5 rounded-full bg-[hsl(217,91%,70%)] animate-pulse flex-shrink-0" />
               </div>
               <div className="text-left">
                 <div className="font-bold text-white text-base">{c.trust.responseTime}</div>
                 <div className="text-sm text-white/80">{c.trust.responseLabel}</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 text-white/90 bg-[hsl(45,100%,55%)]/10 backdrop-blur-md rounded-xl p-4 border border-[hsl(45,100%,55%)]/20 hover:bg-[hsl(45,100%,55%)]/15 transition-all duration-300">
-              <div className="p-2 bg-[hsl(45,100%,55%)]/20 rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-[hsl(45,100%,60%)] flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 text-white/90 bg-primary/10 backdrop-blur-md rounded-xl p-4 border border-primary/20 hover:bg-primary/15 transition-all duration-300">
+              <div className="p-2 bg-primary/20 rounded-lg">
+                <CheckCircle2 className="w-5 h-5 text-[hsl(217,91%,75%)] flex-shrink-0" />
               </div>
               <div className="text-left">
                 <div className="font-bold text-white text-base">{c.trust.noCommitment}</div>
@@ -242,7 +242,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
 
           <p className="mt-8 text-white/80 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-medium">
             <span className="flex items-center justify-center gap-2 flex-wrap">
-              <CheckCircle2 className="w-4 h-4 text-[hsl(45,100%,60%)]" />
+              <CheckCircle2 className="w-4 h-4 text-[hsl(217,91%,75%)]" />
               {c.trust.footer}
             </span>
           </p>
