@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Navbar } from "@/components/Navbar";
 
 const SUPPORTED_LANGS = ['en', 'ge', 'de'];
 
@@ -21,7 +22,8 @@ export default async function HomeLangPage({
 
   return (
     <div>
-      <p>BARE PAGE OK — lang: {rawLang}</p>
+      <Navbar />
+      <p style={{ padding: '2rem' }}>Navbar OK</p>
     </div>
   );
 }
