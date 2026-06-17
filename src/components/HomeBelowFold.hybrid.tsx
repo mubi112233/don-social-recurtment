@@ -11,10 +11,17 @@ import { SPACING } from "@/lib/constants";
 import { fetchApiData, API_ENDPOINTS, normalizeLanguage, type PricingResponse } from "@/lib/api";
 
 export async function HomeBelowFold({ lang }: { lang: string }) {
-  const [servicesData, pricingData] = await Promise.all([
-    fetchApiData<{ services: any[] }>(API_ENDPOINTS.SERVICES, normalizeLanguage(lang)),
-    fetchApiData<PricingResponse>(API_ENDPOINTS.PRICING, normalizeLanguage(lang)),
-  ]);
+  let servicesData = null;
+  let pricingData = null;
+  try {
+    [servicesData, pricingData] = await Promise.all([
+      fetchApiData<{ services: any[] }>(API_ENDPOINTS.SERVICES, normalizeLanguage(lang)),
+      fetchApiData<PricingResponse>(API_ENDPOINTS.PRICING, normalizeLanguage(lang)),
+    ]);
+    console.log('[HomeBelowFold] data fetched ok, lang:', lang);
+  } catch (e) {
+    console.error('[HomeBelowFold] CRASH fetching services/pricing:', e);
+  }
 
   const initialServices = Array.isArray((servicesData as any)?.services)
     ? [...(servicesData as any).services].sort((a: any, b: any) => a.order - b.order)

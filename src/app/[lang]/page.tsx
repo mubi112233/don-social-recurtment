@@ -188,7 +188,14 @@ export default async function HomeLangPage({
   const jsonLd = pageJsonLd(SITE_URL)[lang];
 
   // Fetch hero data server-side so crawlers see real content in HTML
-  const heroApiData = await fetchApiData<{ hero: HeroData | HeroData[] }>(API_ENDPOINTS.HERO, normalizeLanguage(lang));
+  let heroApiData = null;
+  try {
+    heroApiData = await fetchApiData<{ hero: HeroData | HeroData[] }>(API_ENDPOINTS.HERO, normalizeLanguage(lang));
+    console.log('[HomeLangPage] heroApiData ok, lang:', lang);
+  } catch (e) {
+    console.error('[HomeLangPage] CRASH fetching hero:', e);
+  }
+
   let initialHero: HeroData | null = null;
   if (heroApiData?.hero) {
     if (Array.isArray(heroApiData.hero)) {
@@ -200,7 +207,12 @@ export default async function HomeLangPage({
   }
 
   // Fetch FAQ data for structured data
-  const faqData = await fetchFAQ(normalizeLanguage(lang));
+  let faqData = null;
+  try {
+    faqData = await fetchFAQ(normalizeLanguage(lang));
+  } catch (e) {
+    console.error('[HomeLangPage] CRASH fetching FAQ:', e);
+  }
   const faqs = faqData?.faqs?.slice(0, 10) || [];
 
   // Generate FAQ schema

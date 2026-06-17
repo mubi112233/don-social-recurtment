@@ -235,8 +235,14 @@ const localBusinessJsonLd = {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const headersList = await headers();
-  const htmlLang = headersList.get("x-html-lang") || "en";
+  let headersList;
+  let htmlLang = "en";
+  try {
+    headersList = await headers();
+    htmlLang = headersList.get("x-html-lang") || "en";
+  } catch (e) {
+    console.error("[RootLayout] headers() failed:", e);
+  }
 
   return (
     <html lang={htmlLang} suppressHydrationWarning className="font-sans">
