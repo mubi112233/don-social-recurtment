@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { HomeBelowFold } from "@/components/HomeBelowFold.hybrid";
 
 const SUPPORTED_LANGS = ['en', 'ge', 'de'];
 
@@ -25,6 +26,7 @@ export default async function HomeLangPage({
     <div>
       <Navbar />
       <Hero initialData={null} />
+      <HomeBelowFold lang={rawLang} />
     </div>
   );
 }
