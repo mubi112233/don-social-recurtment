@@ -66,8 +66,8 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] } = {}) => {
 
         if (!data) throw new Error("Failed to fetch blogs");
 
-        const fetchedBlogs = [...data.blogs].sort(
-          (a: BlogPost, b: BlogPost) =>
+        const fetchedBlogs = [...(data.blogs as any[])].sort(
+          (a, b) =>
             (a.order || 0) - (b.order || 0) || (a.blogId || 0) - (b.blogId || 0)
         );
 
@@ -136,7 +136,7 @@ export const Blog = ({ initialPosts }: { initialPosts?: BlogPost[] } = {}) => {
 
       <div className={`container mx-auto ${SPACING.container} relative z-10`}>
         <div className="mb-12 sm:mb-16 lg:mb-20 text-left max-w-5xl">
-/          <span className="inline-block px-4 py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-sm font-bold rounded-full mb-4 shadow-md">
+          <span className="inline-block px-4 py-2 bg-gradient-to-r from-[hsl(330,81%,60%)] to-[hsl(217,91%,60%)] text-white text-sm font-bold rounded-full mb-4 shadow-md">
             {copy.badge}
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
