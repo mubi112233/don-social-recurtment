@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
 
 const SUPPORTED_LANGS = ['en', 'ge', 'de'];
 
@@ -23,7 +24,7 @@ export default async function HomeLangPage({
   return (
     <div>
       <Navbar />
-      <p style={{ padding: '2rem' }}>Navbar OK</p>
+      <Hero initialData={null} />
     </div>
   );
 }
