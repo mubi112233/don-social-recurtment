@@ -235,46 +235,18 @@ const localBusinessJsonLd = {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  let headersList;
   let htmlLang = "en";
   try {
-    headersList = await headers();
+    const headersList = await headers();
     htmlLang = headersList.get("x-html-lang") || "en";
   } catch (e) {
     console.error("[RootLayout] headers() failed:", e);
   }
 
   return (
-    <html lang={htmlLang} suppressHydrationWarning className="font-sans">
-      <head suppressHydrationWarning>
-        {/* Performance: Preconnect to external domains */}
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-        {/* Security */}
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
-        </a>
-        <DesignTokensProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </DesignTokensProvider>
+    <html lang={htmlLang} suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );

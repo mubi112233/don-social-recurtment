@@ -184,73 +184,9 @@ export default async function HomeLangPage({
     notFound();
   }
 
-  const lang = rawLang === 'de' || rawLang === 'ge' ? 'ge' : 'en';
-  const jsonLd = pageJsonLd(SITE_URL)[lang];
-
-  // Fetch hero data server-side so crawlers see real content in HTML
-  let heroApiData = null;
-  try {
-    heroApiData = await fetchApiData<{ hero: HeroData | HeroData[] }>(API_ENDPOINTS.HERO, normalizeLanguage(lang));
-    console.log('[HomeLangPage] heroApiData ok, lang:', lang);
-  } catch (e) {
-    console.error('[HomeLangPage] CRASH fetching hero:', e);
-  }
-
-  let initialHero: HeroData | null = null;
-  if (heroApiData?.hero) {
-    if (Array.isArray(heroApiData.hero)) {
-      const sorted = [...heroApiData.hero].sort((a, b) => (b._id || '').localeCompare(a._id || ''));
-      initialHero = sorted[0] || null;
-    } else {
-      initialHero = heroApiData.hero;
-    }
-  }
-
-  // Fetch FAQ data for structured data
-  let faqData = null;
-  try {
-    faqData = await fetchFAQ(normalizeLanguage(lang));
-  } catch (e) {
-    console.error('[HomeLangPage] CRASH fetching FAQ:', e);
-  }
-  const faqs = faqData?.faqs?.slice(0, 10) || [];
-
-  // Generate FAQ schema
-  const faqSchema = faqs.length > 0
-    ? generateFAQSchema(faqs.map((f: any) => ({ question: f.question, answer: f.answer })))
-    : null;
-
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { label: lang === 'ge' ? 'Startseite' : 'Home', href: `/${lang}` },
-  ]);
-
   return (
-    <div className="min-h-screen bg-background" suppressHydrationWarning>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        suppressHydrationWarning
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        suppressHydrationWarning
-      />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-          suppressHydrationWarning
-        />
-      )}
-      {/* CRASH ISOLATION: Navbar and Hero commented out */}
-      {/* <Navbar /> */}
-      <main id="main-content" className="overflow-x-hidden">
-        {/* <Hero initialData={initialHero} /> */}
-        {/* <HomeBelowFold lang={lang} /> */}
-        <p style={{ padding: '2rem' }}>Page shell OK — Hero/Navbar commented out</p>
-      </main>
+    <div>
+      <p>BARE PAGE OK — lang: {rawLang}</p>
     </div>
   );
 }
